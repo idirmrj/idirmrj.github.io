@@ -6,13 +6,11 @@
 <title>Idir Meradji — AI / ML Engineer</title>
 <meta name="description" content="AI / ML Engineer building systems that reason over structured knowledge — Knowledge Graphs + LLMs. Open to full-time roles from September 2026.">
 
-<!-- tab icon -->
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#7B2CBF">
 
-<!-- link preview when shared on LinkedIn, Slack, WhatsApp… -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Idir Meradji — AI / ML Engineer">
 <meta property="og:description" content="I build AI systems from the ground up — knowledge graphs, neural architectures, computer vision — and get them out of the notebook.">
@@ -32,7 +30,7 @@
   --accent:#7B2CBF;
   --accent-deep:#4A1178;
   --accent-soft:#EDE3F8;
-  --accent-2:#B07C3A;          /* secondary, swapped by the konami palettes */
+  --accent-2:#B07C3A;        
 
   --bg:#FAFAFB;
   --surface:#FFFFFF;
@@ -72,7 +70,6 @@ a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 
-/* ambient background pattern — original node/edge + spark glyphs, barely there */
 body::before{
   content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22240%22 height=%22240%22 viewBox=%220 0 240 240%22%3E%3Cg fill=%22none%22 stroke=%22%2314121A%22 stroke-width=%221.6%22 stroke-linecap=%22round%22%3E%3Cg transform=%22translate(34,42) rotate(28)%22%3E%3Cline x1=%22-11%22 y1=%220%22 x2=%2211%22 y2=%220%22/%3E%3Ccircle cx=%22-13%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3Ccircle cx=%2213%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3C/g%3E%3Cg transform=%22translate(168,96) rotate(-46)%22%3E%3Cline x1=%22-11%22 y1=%220%22 x2=%2211%22 y2=%220%22/%3E%3Ccircle cx=%22-13%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3Ccircle cx=%2213%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3C/g%3E%3Cg transform=%22translate(96,182) rotate(64)%22%3E%3Cline x1=%22-11%22 y1=%220%22 x2=%2211%22 y2=%220%22/%3E%3Ccircle cx=%22-13%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3Ccircle cx=%2213%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3C/g%3E%3Cg transform=%22translate(206,206) rotate(-18)%22%3E%3Cline x1=%22-11%22 y1=%220%22 x2=%2211%22 y2=%220%22/%3E%3Ccircle cx=%22-13%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3Ccircle cx=%2213%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3C/g%3E%3Cpath d=%22M112 44 q4 -12 4 -12 q0 12 12 12 q-12 0 -12 12 q0 -12 -4 -12z%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3Cpath d=%22M30 140 q4 -12 4 -12 q0 12 12 12 q-12 0 -12 12 q0 -12 -4 -12z%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3Cpath d=%22M178 24 q3 -9 3 -9 q0 9 9 9 q-9 0 -9 9 q0 -9 -3 -9z%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3C/g%3E%3C/svg%3E");
@@ -176,10 +173,8 @@ h1{
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 .btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8}
 
-/* photo + turtle block share one column */
 .hero-side{display:flex;flex-direction:column;gap:16px}
 .photo-wrap{position:relative}
-/* dot-grid peeking out behind the top-right corner — nodes, not decoration for its own sake */
 .photo-wrap::before{
   content:"";position:absolute;top:-18px;right:-18px;width:132px;height:132px;z-index:0;
   background-image:radial-gradient(color-mix(in srgb,var(--accent) 42%,transparent) 1.5px,transparent 1.5px);
@@ -257,12 +252,10 @@ h2{
 .lede{font-size:1.05rem;color:var(--ink);max-width:64ch;margin:0 0 18px}
 .lede.soft{color:var(--muted);font-size:1rem}
 
-/* reveal */
 .reveal{opacity:0;transform:translateY(18px)}
 .reveal.in{opacity:1;transform:none;transition:opacity .6s var(--ease), transform .6s var(--ease)}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
 
-/* currently chip */
 .currently{
   display:inline-flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px;
   font-family:var(--mono);font-size:.78rem;color:var(--muted);
@@ -430,7 +423,6 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
 <body>
 <a href="#main" class="skip" data-i18n="skip">Skip to content</a>
 
-<!-- ============================ NAV ============================ -->
 <nav class="nav">
   <div class="wrap nav-in">
     <a href="#" class="brand">Idir Meradji<span>.</span></a>
@@ -461,14 +453,13 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
 
 <main id="main">
 
-<!-- ============================ HERO ============================ -->
 <header class="hero">
   <div class="wrap hero-in">
     <div>
       <span class="eyebrow"><i class="dot"></i><span data-i18n="hero.badge">Open to full-time roles · September 2026</span></span>
       <h1>Idir Meradji</h1>
       <p class="hero-role" data-i18n="hero.role">AI / ML Engineer</p>
-      <p class="tagline" data-i18n="hero.tagline">I build AI systems from the ground up — knowledge graphs, neural architectures, computer vision — and get them out of the notebook.</p>
+      <p class="tagline" data-i18n="hero.tagline">I build AI systems from the ground up mixing knowledge graphs, neural architectures, computer vision and get them out of the notebook.</p>
       <p class="subtext" data-i18n="hero.subtext">Final-year M2 Data Science &amp; AI @ Université Paris-Saclay · AI Engineer Intern @ Dassault Systèmes.</p>
       <div class="cta-row">
         <a class="btn btn-primary" id="ghHero" href="#">
@@ -487,7 +478,6 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
     </div>
 
     <div class="hero-side">
-      <!-- photo — drop your file at assets/idir.jpg -->
       <div class="photo-wrap">
         <figure class="photo">
           <div class="photo-ph" aria-hidden="true">
@@ -498,7 +488,6 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
         </figure>
       </div>
 
-      <!-- signature element: the identity card, written as RDF -->
       <div class="triple" aria-hidden="true">
         <div class="triple-bar"><i class="tl"></i><i class="tl"></i><i class="tl"></i><b>idir.ttl</b></div>
         <pre id="ttl"></pre>
@@ -507,18 +496,16 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
   </div>
 </header>
 
-<!-- ============================ ABOUT ============================ -->
 <section id="about">
   <div class="wrap">
     <p class="label reveal" data-i18n="lbl.about">about</p>
     <h2 class="reveal" data-i18n="about.h">I'd rather build it than import it.</h2>
-    <p class="lede reveal" data-i18n="about.p1">I'm an AI/ML engineer who learns a thing by building it from the bottom. That's meant writing a Transformer tensor by tensor, hand-modelling an OWL ontology, wiring classical image processing into a CNN, and turning a research prototype into a deployed service. Different domains, same instinct: understand the machinery, then make it survive contact with real data.</p>
+    <p class="lede reveal" data-i18n="about.p1">I'm a Software engineer with a big focus more AI/ML, who learns a thing by building it from the bottom. That's meant writing a Transformer tensor by tensor, hand-modelling an OWL ontology, wiring classical image processing into a CNN, and turning a research prototype into a deployed service. Different domains, same instinct: understand the problem, then make it survive contact with real data.</p>
     <p class="lede soft reveal" data-i18n="about.p2">Most recently that's been retrieval and knowledge graphs at Dassault Systèmes and BNP Paribas — but the through-line across everything I've shipped is engineering, not a single framework. I care as much about clean pipelines and reliable evaluation as about the last point of accuracy.</p>
-    <p class="reveal"><span class="currently"><span data-i18n="about.now">Currently:</span> <b data-i18n="about.now1">reading fantasy</b> · <b data-i18n="about.now2">exploring Teyvat</b> · <b data-i18n="about.now3">one album on repeat</b></span></p>
+    <p class="reveal"><span class="currently"><span data-i18n="about.now">Currently:</span> <b data-i18n="about.now1">Searching work</b> · <b data-i18n="about.now2">exploring Teyvat</b> · <b data-i18n="about.now3">Doja Cat on repeat !</b></span></p>
   </div>
 </section>
 
-<!-- ============================ EXPERIENCE ============================ -->
 <section id="experience">
   <div class="wrap">
     <p class="label reveal" data-i18n="lbl.exp">experience</p>
@@ -594,7 +581,6 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
   </div>
 </section>
 
-<!-- ============================ PROJECTS ============================ -->
 <section id="projects">
   <div class="wrap">
     <p class="label reveal" data-i18n="lbl.projects">projects</p>
@@ -605,9 +591,9 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
     <article class="featured reveal">
       <div class="featured-body">
         <span class="star">★ <span data-i18n="proj.featured">Knowledge Graphs · live demo</span></span>
-        <h3 data-i18n="p1.t">Academic Ecosystem Ontology</h3>
-        <p data-i18n="p1.d">An RDF/OWL ontology of the academic world — researchers, labs, publications, topics — with semantic reasoning and SPARQL querying on top. Inference surfaces relationships that were never explicitly stated, turning a flat dataset into something you can actually ask questions of.</p>
-        <div class="tags"><span class="tag">RDF</span><span class="tag">OWL</span><span class="tag">SPARQL</span><span class="tag">Protégé</span><span class="tag">Python</span><span class="tag">rdflib</span></div>
+        <h3 data-i18n="p1.t">Ask a Knowledge Graph</h3>
+        <p data-i18n="p1.d">Ask a question in plain language and get an answer straight from a graph. An LLM turns the question into SPARQL against a hand-modelled RDF ontology, the query runs locally, and a second pass turns the raw bindings back into a sentence. Same architecture as the assistant I built at Dassault Systèmes, rebuilt from scratch at a scale you can actually poke at.</p>
+        <div class="tags"><span class="tag">RDF</span><span class="tag">SPARQL</span><span class="tag">rdflib</span><span class="tag">LLM</span><span class="tag">FAISS</span><span class="tag">Streamlit</span></div>
         <div class="card-links">
           <a href="#" data-link="p1-code">
             <svg viewBox="0 0 24 24"><path d="M8 18l-6-6 6-6M16 6l6 6-6 6"/></svg>
@@ -721,7 +707,7 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
 </main>
 
 <footer>
-  <div class="wrap"><p>Idir Meradji · 2026 · <span data-i18n="footer">built with too much coffee ☕</span></p></div>
+  <div class="wrap"><p>Idir Meradji · 2026 · <span data-i18n="footer">built with too much LOVE :D</span></p></div>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -731,8 +717,7 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
    CONFIG — the only block you need to edit
    ============================================================== */
 const CONFIG = {
-  // Paste your Hugging Face Space URL here to activate the demo frame.
-  // e.g. "https://your-name-your-space.hf.space"
+  // Demo URL e.g. "https://your-name-your-space.hf.space"
   DEMO_URL: "",
 
   GITHUB:     "https://github.com/idirmrj",
@@ -741,7 +726,7 @@ const CONFIG = {
   RESUME_FR:  "assets/Idir-Meradji-CV-FR.pdf",
 
   REPOS: {
-    "p1-code": "https://github.com/idirmrj/academic-ecosystem-ontology",
+    "p1-code": "https://github.com/idirmrj/ask-a-knowledge-graph",
     "p2-code": "https://github.com/idirmrj/transformer-from-scratch",
     "p3-code": "https://github.com/idirmrj/brain-tumor-detection",
     "p4-code": "https://github.com/idirmrj/credit-risk-assessment",
@@ -756,16 +741,16 @@ const I18N = {
   en: {
     "skip":"Skip to content",
     "nav.about":"About","nav.exp":"Experience","nav.skills":"Skills","nav.projects":"Projects","nav.contact":"Contact","nav.cv":"Resume",
-    "hero.badge":"Open to full-time roles · September 2026",
+    "hero.badge":"Actually open to full-time roles !",
     "hero.role":"AI / ML Engineer",
-    "hero.tagline":"I build AI systems from the ground up — knowledge graphs, neural architectures, computer vision — and get them out of the notebook.",
+    "hero.tagline":"I build AI systems from the ground up mixing knowledge graphs, neural architectures, computer vision and get them out of the notebook.",
     "hero.subtext":"Final-year M2 Data Science & AI @ Université Paris-Saclay · AI Engineer Intern @ Dassault Systèmes.",
     "hero.cta1":"View GitHub","hero.cta2":"See the demo","hero.cta3":"Get in touch",
     "lbl.about":"about","lbl.exp":"experience","lbl.skills":"skills","lbl.projects":"projects","lbl.contact":"contact",
     "about.h":"I'd rather build it than import it.",
-    "about.p1":"I'm an AI/ML engineer who learns a thing by building it from the bottom. That's meant writing a Transformer tensor by tensor, hand-modelling an OWL ontology, wiring classical image processing into a CNN, and turning a research prototype into a deployed service. Different domains, same instinct: understand the machinery, then make it survive contact with real data.",
+    "about.p1":"I'm a Software engineer with a big focus more AI/ML, who learns a thing by building it from the bottom. That's meant writing a Transformer tensor by tensor, hand-modelling an OWL ontology, wiring classical image processing into a CNN, and turning a research prototype into a deployed service. Different domains, same instinct: understand the problem, then make it survive contact with real data.",
     "about.p2":"Most recently that's been retrieval and knowledge graphs at Dassault Systèmes and BNP Paribas — but the through-line across everything I've shipped is engineering, not a single framework. I care as much about clean pipelines and reliable evaluation as about the last point of accuracy.",
-    "about.now":"Currently:","about.now1":"reading fantasy","about.now2":"exploring Teyvat","about.now3":"one album on repeat",
+    "about.now":"Currently:","about.now1":"Searching work","about.now2":"exploring Teyvat","about.now3":"Doja Cat on repeat !",
     "exp.h":"Where I've shipped",
     "exp.1.role":"AI / Software Engineer Intern","exp.1.when":"Mar – Aug 2026",
     "exp.1.desc":"Built an end-to-end GraphRAG assistant over a skills ontology (ESCO/SKOS): natural-language to SPARQL, an ontology embedding pipeline in Java with an in-memory vector store, and a conversational panel inside the 3DEXPERIENCE Ontology Explorer.",
@@ -781,8 +766,8 @@ const I18N = {
     "proj.sub":"Knowledge graphs, neural architectures, computer vision, applied risk modelling, representation learning — each one built rather than assembled from a tutorial.",
     "proj.featured":"Knowledge Graphs · live demo","btn.code":"Code","btn.demo":"Live demo",
     "d2":"Deep Learning · NLP","d3":"Computer Vision · Medical Imaging","d4":"Applied ML · Risk & Fraud","d5":"Representation Learning",
-    "p1.t":"Academic Ecosystem Ontology",
-    "p1.d":"An RDF/OWL ontology of the academic world — researchers, labs, publications, topics — with semantic reasoning and SPARQL querying on top. Inference surfaces relationships that were never explicitly stated, turning a flat dataset into something you can actually ask questions of.",
+    "p1.t":"Ask a Knowledge Graph",
+    "p1.d":"Ask a question in plain language and get an answer straight from a graph. An LLM turns the question into SPARQL against a hand-modelled RDF ontology, the query runs locally, and a second pass turns the raw bindings back into a sentence. Same architecture as the assistant I built at Dassault Systèmes, rebuilt from scratch at a scale you can actually poke at.",
     "demo.badge":"live demo",
     "demo.text":"The interactive demo lands here — ask a question in plain language, watch the SPARQL get generated and run against the graph.",
     "p2.t":"Transformer from Scratch",
@@ -803,22 +788,22 @@ const I18N = {
     "contact.h":"Let's talk",
     "contact.p":"Looking for a full-time AI/ML engineering role from September 2026. If your team works on retrieval, knowledge graphs, or getting models into production, I'd like to hear about it.",
     "contact.cvk":"resume","contact.cvv":"Download PDF",
-    "footer":"built with too much coffee ☕",
+    "footer":"built with too much LOVE :D",
     "toast.palette":"palette switched →"
   },
   fr: {
     "skip":"Aller au contenu",
     "nav.about":"À propos","nav.exp":"Expériences","nav.skills":"Compétences","nav.projects":"Projets","nav.contact":"Contact","nav.cv":"CV",
-    "hero.badge":"Disponible en CDI · septembre 2026",
+    "hero.badge":"Disponible en CDI · dès maintenant",
     "hero.role":"Ingénieur IA / ML",
     "hero.tagline":"Je construis des systèmes d'IA depuis les fondations — graphes de connaissances, architectures neuronales, vision par ordinateur — et je les sors du notebook.",
     "hero.subtext":"En dernière année de M2 Data Science & IA @ Université Paris-Saclay · Stagiaire Ingénieur IA @ Dassault Systèmes.",
     "hero.cta1":"Voir GitHub","hero.cta2":"Voir la démo","hero.cta3":"Me contacter",
     "lbl.about":"à propos","lbl.exp":"expériences","lbl.skills":"compétences","lbl.projects":"projets","lbl.contact":"contact",
     "about.h":"Plutôt le construire que l'importer.",
-    "about.p1":"Je suis ingénieur IA/ML, du genre à comprendre une chose en la reconstruisant par le bas. Ça a voulu dire écrire un Transformer tenseur par tenseur, modéliser une ontologie OWL à la main, brancher du traitement d'image classique sur un CNN, et transformer un prototype de recherche en service déployé. Des domaines différents, le même réflexe : comprendre la mécanique, puis la faire tenir face à de vraies données.",
+    "about.p1":"Je suis ingénieur Software avec une large préférence pour les sujets IA/ML, du genre à comprendre une chose en la reconstruisant par le bas. Ça a voulu dire écrire un Transformer tenseur par tenseur, modéliser une ontologie OWL à la main, brancher du traitement d'image classique sur un CNN, et transformer un prototype de recherche en service déployé. Des domaines différents, le même réflexe : comprendre l'architecture', puis la faire tenir face à de vraies données.",
     "about.p2":"Récemment, c'est le retrieval et les graphes de connaissances chez Dassault Systèmes et BNP Paribas — mais le fil conducteur de tout ce que j'ai livré, c'est l'ingénierie, pas un framework en particulier. Je tiens autant aux pipelines propres et à une évaluation fiable qu'au dernier point de précision.",
-    "about.now":"En ce moment :","about.now1":"un roman de fantasy","about.now2":"l'exploration de Teyvat","about.now3":"un album en boucle",
+    "about.now":"En ce moment :","about.now1":"Recherche d'mploie","about.now2":"l'exploration de Teyvat","about.now3":"Doja Cat en boucle dans mes oreilles",
     "exp.h":"Là où j'ai livré",
     "exp.1.role":"Stagiaire Ingénieur IA / Logiciel","exp.1.when":"mars – août 2026",
     "exp.1.desc":"Construction d'un assistant GraphRAG de bout en bout sur une ontologie de compétences (ESCO/SKOS) : traduction langage naturel → SPARQL, pipeline d'embedding d'ontologies en Java avec vector store en mémoire, et un panel conversationnel dans l'Ontology Explorer de 3DEXPERIENCE.",
@@ -834,8 +819,8 @@ const I18N = {
     "proj.sub":"Graphes de connaissances, architectures neuronales, vision par ordinateur, modélisation du risque, apprentissage de représentations — chacun construit, pas assemblé depuis un tutoriel.",
     "proj.featured":"Graphes de connaissances · démo live","btn.code":"Code","btn.demo":"Démo live",
     "d2":"Deep Learning · NLP","d3":"Vision · Imagerie médicale","d4":"ML appliqué · Risque & fraude","d5":"Apprentissage de représentations",
-    "p1.t":"Ontologie de l'écosystème académique",
-    "p1.d":"Une ontologie RDF/OWL du monde académique — chercheurs, laboratoires, publications, thématiques — avec raisonnement sémantique et interrogation SPARQL par-dessus. L'inférence fait apparaître des relations jamais écrites explicitement, et transforme un jeu de données plat en quelque chose qu'on peut réellement interroger.",
+    "p1.t":"Interroger un graphe de connaissances",
+    "p1.d":"Une question en langage naturel, une réponse tirée directement du graphe. Un LLM traduit la question en SPARQL sur une ontologie RDF modélisée à la main, la requête s'exécute en local, et un second passage retransforme les résultats bruts en phrase. Même architecture que l'assistant que j'ai construit chez Dassault Systèmes, reconstruite de zéro à une échelle où l'on peut mettre les mains dedans.",
     "demo.badge":"démo live",
     "demo.text":"La démo interactive prendra place ici — une question en langage naturel, le SPARQL généré sous vos yeux, puis exécuté sur le graphe.",
     "p2.t":"Transformer from Scratch",
@@ -856,7 +841,7 @@ const I18N = {
     "contact.h":"Discutons",
     "contact.p":"Je recherche un poste d'ingénieur IA/ML en CDI à partir de septembre 2026. Si votre équipe travaille sur le retrieval, les graphes de connaissances ou la mise en production de modèles, ça m'intéresse.",
     "contact.cvk":"cv","contact.cvv":"Télécharger le PDF",
-    "footer":"construit avec beaucoup trop de café ☕",
+    "footer":"construit avec beaucoup trop d'AMOUR :D'",
     "toast.palette":"palette changée →"
   }
 };
