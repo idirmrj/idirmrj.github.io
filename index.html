@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Idir Meradji — AI / ML Engineer</title>
+<meta name="description" content="AI / ML Engineer building systems that reason over structured knowledge — Knowledge Graphs + LLMs. Open to full-time roles from September 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --accent:#7B2CBF;
+  --accent-deep:#4A1178;
+  --accent-soft:#EDE3F8;
+  --accent-2:#B07C3A;          /* secondary, swapped by the konami palettes */
+
+  --bg:#FAFAFB;
+  --surface:#FFFFFF;
+  --line:#E7E4EC;
+  --ink:#14121A;
+  --muted:#6B6478;
+
+  --display:'Space Grotesk','Segoe UI',system-ui,sans-serif;
+  --body:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono','SFMono-Regular',Consolas,monospace;
+
+  --wrap:1120px;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(20,18,26,.04), 0 8px 28px rgba(20,18,26,.06);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+[data-theme="dark"]{
+  --bg:#0E0B14;
+  --surface:#17131F;
+  --line:#2A2436;
+  --ink:#F3F0F7;
+  --muted:#9D95AE;
+  --accent-soft:#251733;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 28px rgba(0,0,0,.35);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  transition:background .3s var(--ease), color .3s var(--ease);
+}
+img{max-width:100%;display:block}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:#fff;padding:12px 18px;z-index:200}
+.skip:focus{left:12px;top:12px}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:color-mix(in srgb,var(--bg) 82%,transparent);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{display:flex;align-items:center;gap:20px;height:68px}
+.brand{
+  font-family:var(--display);font-weight:700;font-size:1.05rem;
+  letter-spacing:-.02em;color:var(--ink);text-decoration:none;white-space:nowrap;
+}
+.brand span{color:var(--accent)}
+.nav-links{display:flex;gap:26px;margin-left:auto}
+.nav-links a{
+  font-size:.88rem;font-weight:500;color:var(--muted);text-decoration:none;
+  transition:color .2s var(--ease);
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-tools{display:flex;align-items:center;gap:8px;margin-left:auto}
+.nav-links + .nav-tools{margin-left:0}
+
+.icon-btn{
+  display:grid;place-items:center;width:36px;height:36px;
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);
+  color:var(--ink);cursor:pointer;font-family:var(--mono);font-size:.72rem;
+  transition:border-color .2s var(--ease), background .2s var(--ease);
+}
+.icon-btn:hover{border-color:var(--accent)}
+.icon-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7}
+.cv-btn{
+  padding:0 16px;height:36px;display:inline-flex;align-items:center;gap:7px;
+  background:var(--accent);color:#fff;border-radius:9px;
+  font-size:.85rem;font-weight:600;text-decoration:none;white-space:nowrap;
+  transition:background .2s var(--ease);
+}
+.cv-btn:hover{background:var(--accent-deep);text-decoration:none}
+.burger{display:none}
+
+/* ============================================================
+   HERO — the signature: an identity card written as RDF
+   ============================================================ */
+.hero{position:relative;overflow:hidden;padding:96px 0 88px}
+.hero::before{
+  content:"";position:absolute;inset:-40% -10% auto -10%;height:620px;z-index:0;
+  background:
+    radial-gradient(48% 52% at 18% 32%, color-mix(in srgb,var(--accent) 22%,transparent) 0%, transparent 68%),
+    radial-gradient(42% 48% at 78% 18%, color-mix(in srgb,var(--accent-2) 16%,transparent) 0%, transparent 66%);
+  filter:blur(14px);pointer-events:none;
+}
+.hero-in{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:.76rem;letter-spacing:.04em;
+  color:var(--accent);background:var(--accent-soft);
+  padding:6px 13px;border-radius:99px;margin-bottom:26px;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+@media (prefers-reduced-motion:no-preference){
+  .dot{animation:pulse 2.4s var(--ease) infinite}
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.78)}}
+
+h1{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(2.7rem,6.2vw,4.3rem);line-height:1.02;
+  letter-spacing:-.035em;margin:0 0 14px;
+}
+.hero-role{
+  font-family:var(--display);font-weight:600;
+  font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--accent);
+  letter-spacing:-.01em;margin:0 0 22px;
+}
+.tagline{font-size:1.12rem;color:var(--ink);max-width:36ch;margin:0 0 14px}
+.subtext{font-size:.95rem;color:var(--muted);max-width:44ch;margin:0 0 34px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:12px 22px;border-radius:10px;font-size:.92rem;font-weight:600;
+  text-decoration:none;cursor:pointer;border:1px solid transparent;
+  transition:transform .18s var(--ease), background .2s var(--ease), border-color .2s var(--ease);
+}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-deep)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8}
+
+/* the turtle block */
+.triple{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.triple-bar{
+  display:flex;align-items:center;gap:8px;padding:11px 16px;
+  border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--accent-soft) 55%,transparent);
+}
+.triple-bar b{
+  font-family:var(--mono);font-size:.74rem;font-weight:500;color:var(--muted);
+  margin-left:6px;letter-spacing:.02em;
+}
+.tl{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.tl:first-child{background:color-mix(in srgb,var(--accent) 55%,transparent)}
+.triple pre{
+  margin:0;padding:22px 18px;font-family:var(--mono);
+  font-size:.79rem;line-height:1.95;overflow-x:auto;color:var(--ink);
+}
+.t-pre{color:var(--muted)}
+.t-sub{color:var(--accent);font-weight:500}
+.t-pred{color:var(--accent-2)}
+.t-obj{color:var(--ink)}
+.t-str{color:#12855F}
+[data-theme="dark"] .t-str{color:#4FD1A0}
+.caret{display:inline-block;width:8px;background:var(--accent);color:transparent}
+@media (prefers-reduced-motion:no-preference){
+  .caret{animation:blink 1.05s steps(1) infinite}
+}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+section{padding:88px 0;border-top:1px solid var(--line)}
+.hero{border-top:none}
+.label{
+  font-family:var(--mono);font-size:.76rem;color:var(--muted);
+  letter-spacing:.06em;margin:0 0 12px;
+}
+.label::before{content:"# ";color:var(--accent)}
+h2{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(1.7rem,3.6vw,2.35rem);letter-spacing:-.028em;
+  margin:0 0 34px;line-height:1.14;
+}
+.lede{font-size:1.05rem;color:var(--ink);max-width:64ch;margin:0 0 18px}
+.lede.soft{color:var(--muted);font-size:1rem}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .6s var(--ease), transform .6s var(--ease)}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+/* currently chip */
+.currently{
+  display:inline-flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px;
+  font-family:var(--mono);font-size:.78rem;color:var(--muted);
+  border:1px dashed var(--line);border-radius:99px;padding:8px 16px;
+}
+.currently b{color:var(--accent);font-weight:500}
+
+/* ============================================================
+   EXPERIENCE
+   ============================================================ */
+.timeline{position:relative;padding-left:30px}
+.timeline::before{
+  content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(to bottom,var(--accent),var(--line));
+}
+.job{position:relative;padding-bottom:38px}
+.job:last-child{padding-bottom:0}
+.job::before{
+  content:"";position:absolute;left:-29px;top:9px;width:11px;height:11px;
+  border-radius:50%;background:var(--bg);border:2px solid var(--accent);
+}
+.job-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-bottom:5px}
+.job h3{font-family:var(--display);font-size:1.08rem;font-weight:600;margin:0;letter-spacing:-.01em}
+.job .org{color:var(--accent);font-weight:600;font-size:.98rem}
+.job .when{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-left:auto}
+.job p{margin:0;color:var(--muted);font-size:.95rem;max-width:70ch}
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px}
+.skill-group h3{
+  font-family:var(--mono);font-size:.79rem;font-weight:500;color:var(--muted);
+  letter-spacing:.04em;margin:0 0 12px;text-transform:uppercase;
+}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{
+  font-size:.84rem;font-weight:500;padding:5px 12px;border-radius:8px;
+  background:var(--accent-soft);color:var(--accent);
+  border:1px solid color-mix(in srgb,var(--accent) 16%,transparent);
+}
+[data-theme="dark"] .chip{color:color-mix(in srgb,var(--accent) 55%,#fff)}
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.featured{
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+  box-shadow:var(--shadow);overflow:hidden;margin-bottom:26px;
+}
+.featured-body{padding:30px}
+.star{
+  display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);
+  font-size:.72rem;color:var(--accent);background:var(--accent-soft);
+  padding:5px 11px;border-radius:99px;margin-bottom:14px;letter-spacing:.03em;
+}
+.featured h3{font-family:var(--display);font-size:1.55rem;font-weight:700;letter-spacing:-.025em;margin:0 0 10px}
+.featured p{color:var(--muted);margin:0 0 18px;max-width:66ch;font-size:.98rem}
+
+.demo-slot{
+  border-top:1px solid var(--line);
+  background:
+    linear-gradient(var(--surface),var(--surface)) padding-box,
+    repeating-linear-gradient(45deg,transparent,transparent 9px,color-mix(in srgb,var(--accent) 5%,transparent) 9px,color-mix(in srgb,var(--accent) 5%,transparent) 18px);
+  min-height:280px;display:grid;place-items:center;padding:30px;text-align:center;
+}
+.demo-slot iframe{width:100%;height:700px;border:0;display:block;border-radius:10px}
+.demo-ph{max-width:44ch}
+.demo-ph .badge{
+  font-family:var(--mono);font-size:.72rem;color:var(--accent);
+  border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);
+  padding:5px 12px;border-radius:99px;display:inline-block;margin-bottom:14px;
+}
+.demo-ph p{margin:0;color:var(--muted);font-size:.92rem;max-width:none}
+
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:22px}
+.card{
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+  padding:26px;display:flex;flex-direction:column;
+  transition:transform .22s var(--ease), border-color .22s var(--ease), box-shadow .22s var(--ease);
+}
+.card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 40%,transparent);box-shadow:var(--shadow)}
+.card .year{font-family:var(--mono);font-size:.74rem;color:var(--muted);margin-bottom:9px;letter-spacing:.02em}
+.card .year b{color:var(--accent);font-weight:500}
+.card .award{
+  display:inline-block;font-family:var(--mono);font-size:.7rem;color:var(--accent-2);
+  border:1px solid color-mix(in srgb,var(--accent-2) 35%,transparent);
+  padding:2px 9px;border-radius:99px;margin-bottom:10px;
+}
+.card h3{font-family:var(--display);font-size:1.14rem;font-weight:600;letter-spacing:-.015em;margin:0 0 9px}
+.card p{color:var(--muted);font-size:.92rem;margin:0 0 16px;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tag{
+  font-family:var(--mono);font-size:.71rem;color:var(--muted);
+  border:1px solid var(--line);padding:3px 9px;border-radius:6px;
+}
+.card-links{display:flex;gap:16px;font-size:.87rem;font-weight:600}
+.card-links a{display:inline-flex;align-items:center;gap:6px}
+.card-links svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8}
+
+/* earlier work strip */
+.strip{margin-top:44px;padding-top:32px;border-top:1px dashed var(--line)}
+.strip h3{font-family:var(--mono);font-size:.79rem;font-weight:500;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin:0 0 18px}
+.strip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.mini{border-left:2px solid var(--accent);padding:2px 0 2px 16px}
+.mini .award{font-family:var(--mono);font-size:.72rem;color:var(--accent);display:block;margin-bottom:4px}
+.mini h4{font-family:var(--display);font-size:.99rem;font-weight:600;margin:0 0 4px}
+.mini p{margin:0;font-size:.88rem;color:var(--muted)}
+
+/* ============================================================
+   CONTACT + FOOTER
+   ============================================================ */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px;margin-top:30px}
+.contact-card{
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+  padding:22px;text-decoration:none;color:var(--ink);display:block;
+  transition:border-color .2s var(--ease), transform .2s var(--ease);
+}
+.contact-card:hover{border-color:var(--accent);transform:translateY(-3px);text-decoration:none}
+.contact-card .k{font-family:var(--mono);font-size:.73rem;color:var(--muted);display:block;margin-bottom:6px}
+.contact-card .v{font-weight:600;font-size:.95rem;word-break:break-word}
+
+footer{border-top:1px solid var(--line);padding:34px 0;text-align:center}
+footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
+
+/* toast */
+.toast{
+  position:fixed;left:50%;bottom:28px;transform:translate(-50%,22px);
+  background:var(--ink);color:var(--bg);padding:12px 22px;border-radius:99px;
+  font-family:var(--mono);font-size:.82rem;opacity:0;pointer-events:none;z-index:300;
+  transition:opacity .3s var(--ease), transform .3s var(--ease);
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:900px){
+  .hero-in{grid-template-columns:1fr;gap:40px}
+  .hero{padding:64px 0 68px}
+  section{padding:64px 0}
+  .nav-links{
+    display:none;position:absolute;top:68px;left:0;right:0;
+    flex-direction:column;gap:0;background:var(--surface);
+    border-bottom:1px solid var(--line);padding:8px 24px 16px;
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:11px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+  .nav-links a:last-child{border-bottom:none}
+  .burger{display:grid}
+  .nav-tools{margin-left:auto}
+  .job .when{margin-left:0;width:100%}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .featured-body,.card{padding:22px}
+  .cv-btn span{display:none}
+  .cv-btn{padding:0 11px}
+  .triple pre{font-size:.71rem}
+}
+</style>
+</head>
+
+<body>
+<a href="#main" class="skip" data-i18n="skip">Skip to content</a>
+
+<!-- ============================ NAV ============================ -->
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="brand">Idir Meradji<span>.</span></a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#about"      data-i18n="nav.about">About</a>
+      <a href="#experience" data-i18n="nav.exp">Experience</a>
+      <a href="#skills"     data-i18n="nav.skills">Skills</a>
+      <a href="#projects"   data-i18n="nav.projects">Projects</a>
+      <a href="#contact"    data-i18n="nav.contact">Contact</a>
+    </div>
+
+    <div class="nav-tools">
+      <button class="icon-btn burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <button class="icon-btn" id="langBtn" aria-label="Switch language">FR</button>
+      <button class="icon-btn" id="themeBtn" aria-label="Switch theme">
+        <svg id="themeIcon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+      <a class="cv-btn" id="cvBtn" href="#" download>
+        <svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.9"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+        <span data-i18n="nav.cv">Resume</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ============================ HERO ============================ -->
+<header class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <span class="eyebrow"><i class="dot"></i><span data-i18n="hero.badge">Open to full-time roles · September 2026</span></span>
+      <h1>Idir Meradji</h1>
+      <p class="hero-role" data-i18n="hero.role">AI / ML Engineer</p>
+      <p class="tagline" data-i18n="hero.tagline">I build AI systems from the ground up — knowledge graphs, neural architectures, computer vision — and get them out of the notebook.</p>
+      <p class="subtext" data-i18n="hero.subtext">Final-year M2 Data Science &amp; AI @ Université Paris-Saclay · AI Engineer Intern @ Dassault Systèmes.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" id="ghHero" href="#">
+          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 00-.9-2.6c3-.3 6.2-1.5 6.2-6.7A5.2 5.2 0 0019.9 5a4.9 4.9 0 00-.1-3.6s-1.1-.3-3.6 1.4a12.3 12.3 0 00-6.4 0C7.3 1.1 6.2 1.4 6.2 1.4A4.9 4.9 0 006.1 5a5.2 5.2 0 00-1.4 3.6c0 5.2 3.2 6.4 6.2 6.7a3.4 3.4 0 00-.9 2.6V22"/></svg>
+          <span data-i18n="hero.cta1">View GitHub</span>
+        </a>
+        <a class="btn btn-ghost" href="#projects">
+          <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+          <span data-i18n="hero.cta2">See the demo</span>
+        </a>
+        <a class="btn btn-ghost" href="#contact">
+          <svg viewBox="0 0 24 24"><path d="M3 6l9 6 9-6M3 6h18v12H3z"/></svg>
+          <span data-i18n="hero.cta3">Get in touch</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- signature element: the identity card, written as RDF -->
+    <div class="triple" aria-hidden="true">
+      <div class="triple-bar"><i class="tl"></i><i class="tl"></i><i class="tl"></i><b>idir.ttl</b></div>
+      <pre id="ttl"></pre>
+    </div>
+  </div>
+</header>
+
+<!-- ============================ ABOUT ============================ -->
+<section id="about">
+  <div class="wrap">
+    <p class="label reveal" data-i18n="lbl.about">about</p>
+    <h2 class="reveal" data-i18n="about.h">I'd rather build it than import it.</h2>
+    <p class="lede reveal" data-i18n="about.p1">I'm an AI/ML engineer who learns a thing by building it from the bottom. That's meant writing a Transformer tensor by tensor, hand-modelling an OWL ontology, wiring classical image processing into a CNN, and turning a research prototype into a deployed service. Different domains, same instinct: understand the machinery, then make it survive contact with real data.</p>
+    <p class="lede soft reveal" data-i18n="about.p2">Most recently that's been retrieval and knowledge graphs at Dassault Systèmes and BNP Paribas — but the through-line across everything I've shipped is engineering, not a single framework. I care as much about clean pipelines and reliable evaluation as about the last point of accuracy.</p>
+    <p class="reveal"><span class="currently"><span data-i18n="about.now">Currently:</span> <b data-i18n="about.now1">reading fantasy</b> · <b data-i18n="about.now2">exploring Teyvat</b> · <b data-i18n="about.now3">one album on repeat</b></span></p>
+  </div>
+</section>
+
+<!-- ============================ EXPERIENCE ============================ -->
+<section id="experience">
+  <div class="wrap">
+    <p class="label reveal" data-i18n="lbl.exp">experience</p>
+    <h2 class="reveal" data-i18n="exp.h">Where I've shipped</h2>
+    <div class="timeline">
+      <article class="job reveal">
+        <div class="job-head">
+          <h3 data-i18n="exp.1.role">AI / Software Engineer Intern</h3>
+          <span class="org">Dassault Systèmes</span>
+          <span class="when" data-i18n="exp.1.when">Mar – Aug 2026</span>
+        </div>
+        <p data-i18n="exp.1.desc">Built an end-to-end GraphRAG assistant over a skills ontology (ESCO/SKOS): natural-language to SPARQL, an ontology embedding pipeline in Java with an in-memory vector store, and a conversational panel inside the 3DEXPERIENCE Ontology Explorer.</p>
+      </article>
+      <article class="job reveal">
+        <div class="job-head">
+          <h3 data-i18n="exp.2.role">AI Engineer Intern</h3>
+          <span class="org">BNP Paribas</span>
+          <span class="when" data-i18n="exp.2.when">Mar – Jun 2025</span>
+        </div>
+        <p data-i18n="exp.2.desc">Built a multi-agent RAG assistant for internal knowledge access — semantic search over 20K+ documents with BGE multilingual embeddings, FAISS indexing, and a GPT model for answer generation.</p>
+      </article>
+      <article class="job reveal">
+        <div class="job-head">
+          <h3 data-i18n="exp.3.role">Data Analyst &amp; NLP Intern</h3>
+          <span class="org">ThynkTech</span>
+          <span class="when" data-i18n="exp.3.when">Nov 2024 – Jan 2025</span>
+        </div>
+        <p data-i18n="exp.3.desc">Built a document-clustering pipeline (TF-IDF + K-Means, scikit-learn, spaCy) over 500+ documents, surfacing recurring topics and the most-referenced resources.</p>
+      </article>
+      <article class="job reveal">
+        <div class="job-head">
+          <h3 data-i18n="exp.4.role">Machine Learning Intern</h3>
+          <span class="org">SAA — Société Nationale d'Assurance</span>
+          <span class="when" data-i18n="exp.4.when">Mar – Jun 2024</span>
+        </div>
+        <p data-i18n="exp.4.desc">Developed a Variational Recurrent Autoencoder in TensorFlow to detect anomalies in clients' historical records, reaching 94% accuracy and cutting manual data-cleaning effort.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SKILLS ============================ -->
+<section id="skills">
+  <div class="wrap">
+    <p class="label reveal" data-i18n="lbl.skills">skills</p>
+    <h2 class="reveal" data-i18n="skills.h">Toolbox</h2>
+    <div class="skill-grid reveal">
+      <div class="skill-group">
+        <h3 data-i18n="sk.1">Programming</h3>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">SQL</span><span class="chip">SPARQL</span><span class="chip">C / C++</span><span class="chip">TypeScript</span></div>
+      </div>
+      <div class="skill-group">
+        <h3 data-i18n="sk.2">Machine Learning &amp; AI</h3>
+        <div class="chips"><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">NLP</span><span class="chip">Generative AI</span><span class="chip">CNNs</span><span class="chip">VAEs</span><span class="chip">Transfer Learning</span></div>
+      </div>
+      <div class="skill-group">
+        <h3 data-i18n="sk.3">LLM &amp; MLOps</h3>
+        <div class="chips"><span class="chip">LangChain</span><span class="chip">LlamaIndex</span><span class="chip">vLLM</span><span class="chip">Ollama</span><span class="chip">MLflow</span><span class="chip">Weights &amp; Biases</span><span class="chip">FAISS</span></div>
+      </div>
+      <div class="skill-group">
+        <h3 data-i18n="sk.4">Knowledge Representation</h3>
+        <div class="chips"><span class="chip">RDF</span><span class="chip">OWL</span><span class="chip">SKOS</span><span class="chip">SHACL</span><span class="chip">Ontology Engineering</span><span class="chip">Protégé</span></div>
+      </div>
+      <div class="skill-group">
+        <h3 data-i18n="sk.5">Data Science &amp; Optimization</h3>
+        <div class="chips"><span class="chip">Feature Engineering</span><span class="chip">Statistical Learning</span><span class="chip">Bayesian Optimization</span><span class="chip">Gaussian Processes</span><span class="chip">Convex Optimization</span></div>
+      </div>
+      <div class="skill-group">
+        <h3 data-i18n="sk.6">Software &amp; Data Engineering</h3>
+        <div class="chips"><span class="chip">REST APIs</span><span class="chip">FastAPI</span><span class="chip">Apache Spark</span><span class="chip">Hadoop</span><span class="chip">Git</span><span class="chip">Streamlit</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROJECTS ============================ -->
+<section id="projects">
+  <div class="wrap">
+    <p class="label reveal" data-i18n="lbl.projects">projects</p>
+    <h2 class="reveal" data-i18n="proj.h">Five domains, one way of working</h2>
+    <p class="lede soft reveal" style="margin-bottom:34px" data-i18n="proj.sub">Knowledge graphs, neural architectures, computer vision, applied risk modelling, representation learning — each one built rather than assembled from a tutorial.</p>
+
+    <!-- FEATURED + DEMO SLOT -->
+    <article class="featured reveal">
+      <div class="featured-body">
+        <span class="star">★ <span data-i18n="proj.featured">Knowledge Graphs · live demo</span></span>
+        <h3 data-i18n="p1.t">Academic Ecosystem Ontology</h3>
+        <p data-i18n="p1.d">An RDF/OWL ontology of the academic world — researchers, labs, publications, topics — with semantic reasoning and SPARQL querying on top. Inference surfaces relationships that were never explicitly stated, turning a flat dataset into something you can actually ask questions of.</p>
+        <div class="tags"><span class="tag">RDF</span><span class="tag">OWL</span><span class="tag">SPARQL</span><span class="tag">Protégé</span><span class="tag">Python</span><span class="tag">rdflib</span></div>
+        <div class="card-links">
+          <a href="#" data-link="p1-code">
+            <svg viewBox="0 0 24 24"><path d="M8 18l-6-6 6-6M16 6l6 6-6 6"/></svg>
+            <span data-i18n="btn.code">Code</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ==========================================================
+           DEMO SLOT — to activate: set DEMO_URL in the CONFIG block
+           at the bottom of this file. Nothing else to change.
+           ========================================================== -->
+      <div class="demo-slot" id="demoSlot">
+        <div class="demo-ph">
+          <span class="badge" data-i18n="demo.badge">live demo</span>
+          <p data-i18n="demo.text">The interactive demo lands here — ask a question in plain language, watch the SPARQL get generated and run against the graph.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- OTHER PROJECTS -->
+    <div class="proj-grid">
+      <article class="card reveal">
+        <span class="year"><b data-i18n="d2">Deep Learning · NLP</b> · 2025</span>
+        <h3 data-i18n="p2.t">Transformer from Scratch</h3>
+        <p data-i18n="p2.d">A full Transformer built in PyTorch with no high-level libraries — multi-head self-attention, positional encoding, and autoregressive text generation, implemented to understand every tensor rather than to call one.</p>
+        <div class="tags"><span class="tag">PyTorch</span><span class="tag">Attention</span><span class="tag">NLP</span></div>
+        <div class="card-links">
+          <a href="#" data-link="p2-code"><svg viewBox="0 0 24 24"><path d="M8 18l-6-6 6-6M16 6l6 6-6 6"/></svg><span data-i18n="btn.code">Code</span></a>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <span class="year"><b data-i18n="d3">Computer Vision · Medical Imaging</b> · 2023</span>
+        <h3 data-i18n="p3.t">Brain Tumor Detection</h3>
+        <p data-i18n="p3.d">A hybrid computer-vision pipeline on MRI scans: classical preprocessing and segmentation feeding a CNN for detection and localization. Two approaches that are usually pitched against each other, working together.</p>
+        <div class="tags"><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">CNN</span><span class="tag">Medical Imaging</span></div>
+        <div class="card-links">
+          <a href="#" data-link="p3-code"><svg viewBox="0 0 24 24"><path d="M8 18l-6-6 6-6M16 6l6 6-6 6"/></svg><span data-i18n="btn.code">Code</span></a>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <span class="year"><b data-i18n="d4">Applied ML · Risk &amp; Fraud</b> · 2024</span>
+        <span class="award" data-i18n="p4.a">1st prize · national</span>
+        <h3 data-i18n="p4.t">Credit Assessment Workflow</h3>
+        <p data-i18n="p4.d">Built at Hack4Future with Société Générale and won first place nationally: an AI-assisted credit workflow chaining document analysis, cross-document consistency checking, and ML fraud detection into a single risk decision.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Document AI</span><span class="tag">Anomaly Detection</span></div>
+        <div class="card-links">
+          <a href="#" data-link="p4-code"><svg viewBox="0 0 24 24"><path d="M8 18l-6-6 6-6M16 6l6 6-6 6"/></svg><span data-i18n="btn.code">Code</span></a>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <span class="year"><b data-i18n="d5">Representation Learning</b> · 2026</span>
+        <h3 data-i18n="p5.t">Neural Feature Learning Study</h3>
+        <p data-i18n="p5.d">A study on multi-model feature fusion: combining deep feature extraction with representation learning to push classification performance past what any single backbone reached on its own.</p>
+        <div class="tags"><span class="tag">PyTorch</span><span class="tag">Feature Fusion</span><span class="tag">Benchmarking</span></div>
+        <div class="card-links">
+          <a href="#" data-link="p5-code"><svg viewBox="0 0 24 24"><path d="M8 18l-6-6 6-6M16 6l6 6-6 6"/></svg><span data-i18n="btn.code">Code</span></a>
+        </div>
+      </article>
+    </div>
+
+    <!-- EARLIER WORK -->
+    <div class="strip reveal">
+      <h3 data-i18n="strip.h">Also worth a look</h3>
+      <div class="strip-grid">
+        <div class="mini">
+          <span class="award" data-i18n="s1.a">recommender systems · 2026</span>
+          <h4 data-i18n="s1.t">Food Planning App</h4>
+          <p data-i18n="s1.d">A deployed meal-planning application built on recommendation algorithms and REST APIs, designed around how people actually eat.</p>
+        </div>
+        <div class="mini">
+          <span class="award" data-i18n="s2.a">2nd place · 2023</span>
+          <h4>IEEE Hackathon</h4>
+          <p data-i18n="s2.d">An intelligent student assistant bringing personalized recommendations, resource aggregation, and productivity tools into one app.</p>
+        </div>
+        <div class="mini">
+          <span class="award" data-i18n="s3.a">thesis · 2025</span>
+          <h4 data-i18n="s3.t">Hybrid Intelligent Assistant</h4>
+          <p data-i18n="s3.d">Engineering thesis: a multi-agent architecture for contextual reasoning and information retrieval, graded with high honors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONTACT ============================ -->
+<section id="contact">
+  <div class="wrap">
+    <p class="label reveal" data-i18n="lbl.contact">contact</p>
+    <h2 class="reveal" data-i18n="contact.h">Let's talk</h2>
+    <p class="lede reveal" data-i18n="contact.p">Looking for a full-time AI/ML engineering role from September 2026. If your team works on retrieval, knowledge graphs, or getting models into production, I'd like to hear about it.</p>
+    <div class="contact-grid reveal">
+      <a class="contact-card" href="mailto:idir.meradji@gmail.com">
+        <span class="k">email</span><span class="v">idir.meradji@gmail.com</span>
+      </a>
+      <a class="contact-card" href="https://www.linkedin.com/in/idir-mohamed-meradji" target="_blank" rel="noopener">
+        <span class="k">linkedin</span><span class="v">idir-mohamed-meradji</span>
+      </a>
+      <a class="contact-card" id="ghContact" href="#" target="_blank" rel="noopener">
+        <span class="k">github</span><span class="v" id="ghHandle">@your-handle</span>
+      </a>
+      <a class="contact-card" id="cvContact" href="#" download>
+        <span class="k" data-i18n="contact.cvk">resume</span><span class="v" data-i18n="contact.cvv">Download PDF</span>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><p>Idir Meradji · 2026 · <span data-i18n="footer">built with too much coffee ☕</span></p></div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ==============================================================
+   CONFIG — the only block you need to edit
+   ============================================================== */
+const CONFIG = {
+  // Paste your Hugging Face Space URL here to activate the demo frame.
+  // e.g. "https://your-name-your-space.hf.space"
+  DEMO_URL: "",
+
+  GITHUB:     "https://github.com/idirmrj",
+  GH_HANDLE:  "@idirmrj",
+  RESUME_EN:  "assets/Idir-Meradji-Resume-EN.pdf",
+  RESUME_FR:  "assets/Idir-Meradji-CV-FR.pdf",
+
+  REPOS: {
+    "p1-code": "https://github.com/idirmrj/academic-ecosystem-ontology",
+    "p2-code": "https://github.com/idirmrj/transformer-from-scratch",
+    "p3-code": "https://github.com/idirmrj/brain-tumor-detection",
+    "p4-code": "https://github.com/idirmrj/credit-risk-assessment",
+    "p5-code": "https://github.com/idirmrj/neural-feature-learning"
+  }
+};
+
+/* ==============================================================
+   COPY — every string, both languages
+   ============================================================== */
+const I18N = {
+  en: {
+    "skip":"Skip to content",
+    "nav.about":"About","nav.exp":"Experience","nav.skills":"Skills","nav.projects":"Projects","nav.contact":"Contact","nav.cv":"Resume",
+    "hero.badge":"Open to full-time roles · September 2026",
+    "hero.role":"AI / ML Engineer",
+    "hero.tagline":"I build AI systems from the ground up — knowledge graphs, neural architectures, computer vision — and get them out of the notebook.",
+    "hero.subtext":"Final-year M2 Data Science & AI @ Université Paris-Saclay · AI Engineer Intern @ Dassault Systèmes.",
+    "hero.cta1":"View GitHub","hero.cta2":"See the demo","hero.cta3":"Get in touch",
+    "lbl.about":"about","lbl.exp":"experience","lbl.skills":"skills","lbl.projects":"projects","lbl.contact":"contact",
+    "about.h":"I'd rather build it than import it.",
+    "about.p1":"I'm an AI/ML engineer who learns a thing by building it from the bottom. That's meant writing a Transformer tensor by tensor, hand-modelling an OWL ontology, wiring classical image processing into a CNN, and turning a research prototype into a deployed service. Different domains, same instinct: understand the machinery, then make it survive contact with real data.",
+    "about.p2":"Most recently that's been retrieval and knowledge graphs at Dassault Systèmes and BNP Paribas — but the through-line across everything I've shipped is engineering, not a single framework. I care as much about clean pipelines and reliable evaluation as about the last point of accuracy.",
+    "about.now":"Currently:","about.now1":"reading fantasy","about.now2":"exploring Teyvat","about.now3":"one album on repeat",
+    "exp.h":"Where I've shipped",
+    "exp.1.role":"AI / Software Engineer Intern","exp.1.when":"Mar – Aug 2026",
+    "exp.1.desc":"Built an end-to-end GraphRAG assistant over a skills ontology (ESCO/SKOS): natural-language to SPARQL, an ontology embedding pipeline in Java with an in-memory vector store, and a conversational panel inside the 3DEXPERIENCE Ontology Explorer.",
+    "exp.2.role":"AI Engineer Intern","exp.2.when":"Mar – Jun 2025",
+    "exp.2.desc":"Built a multi-agent RAG assistant for internal knowledge access — semantic search over 20K+ documents with BGE multilingual embeddings, FAISS indexing, and a GPT model for answer generation.",
+    "exp.3.role":"Data Analyst & NLP Intern","exp.3.when":"Nov 2024 – Jan 2025",
+    "exp.3.desc":"Built a document-clustering pipeline (TF-IDF + K-Means, scikit-learn, spaCy) over 500+ documents, surfacing recurring topics and the most-referenced resources.",
+    "exp.4.role":"Machine Learning Intern","exp.4.when":"Mar – Jun 2024",
+    "exp.4.desc":"Developed a Variational Recurrent Autoencoder in TensorFlow to detect anomalies in clients' historical records, reaching 94% accuracy and cutting manual data-cleaning effort.",
+    "skills.h":"Toolbox",
+    "sk.1":"Programming","sk.2":"Machine Learning & AI","sk.3":"LLM & MLOps","sk.4":"Knowledge Representation","sk.5":"Data Science & Optimization","sk.6":"Software & Data Engineering",
+    "proj.h":"Five domains, one way of working",
+    "proj.sub":"Knowledge graphs, neural architectures, computer vision, applied risk modelling, representation learning — each one built rather than assembled from a tutorial.",
+    "proj.featured":"Knowledge Graphs · live demo","btn.code":"Code","btn.demo":"Live demo",
+    "d2":"Deep Learning · NLP","d3":"Computer Vision · Medical Imaging","d4":"Applied ML · Risk & Fraud","d5":"Representation Learning",
+    "p1.t":"Academic Ecosystem Ontology",
+    "p1.d":"An RDF/OWL ontology of the academic world — researchers, labs, publications, topics — with semantic reasoning and SPARQL querying on top. Inference surfaces relationships that were never explicitly stated, turning a flat dataset into something you can actually ask questions of.",
+    "demo.badge":"live demo",
+    "demo.text":"The interactive demo lands here — ask a question in plain language, watch the SPARQL get generated and run against the graph.",
+    "p2.t":"Transformer from Scratch",
+    "p2.d":"A full Transformer built in PyTorch with no high-level libraries — multi-head self-attention, positional encoding, and autoregressive text generation, implemented to understand every tensor rather than to call one.",
+    "p3.t":"Brain Tumor Detection",
+    "p3.d":"A hybrid computer-vision pipeline on MRI scans: classical preprocessing and segmentation feeding a CNN for detection and localization. Two approaches that are usually pitched against each other, working together.",
+    "p4.t":"Credit Assessment Workflow","p4.a":"1st prize · national",
+    "p4.d":"Built at Hack4Future with Société Générale and won first place nationally: an AI-assisted credit workflow chaining document analysis, cross-document consistency checking, and ML fraud detection into a single risk decision.",
+    "p5.t":"Neural Feature Learning Study",
+    "p5.d":"A study on multi-model feature fusion: combining deep feature extraction with representation learning to push classification performance past what any single backbone reached on its own.",
+    "strip.h":"Also worth a look",
+    "s1.a":"recommender systems · 2026","s1.t":"Food Planning App",
+    "s1.d":"A deployed meal-planning application built on recommendation algorithms and REST APIs, designed around how people actually eat.",
+    "s2.a":"2nd place · 2023",
+    "s2.d":"An intelligent student assistant bringing personalized recommendations, resource aggregation, and productivity tools into one app.",
+    "s3.a":"thesis · 2025","s3.t":"Hybrid Intelligent Assistant",
+    "s3.d":"Engineering thesis: a multi-agent architecture for contextual reasoning and information retrieval, graded with high honors.",
+    "contact.h":"Let's talk",
+    "contact.p":"Looking for a full-time AI/ML engineering role from September 2026. If your team works on retrieval, knowledge graphs, or getting models into production, I'd like to hear about it.",
+    "contact.cvk":"resume","contact.cvv":"Download PDF",
+    "footer":"built with too much coffee ☕",
+    "toast.palette":"palette switched →"
+  },
+  fr: {
+    "skip":"Aller au contenu",
+    "nav.about":"À propos","nav.exp":"Expériences","nav.skills":"Compétences","nav.projects":"Projets","nav.contact":"Contact","nav.cv":"CV",
+    "hero.badge":"Disponible en CDI · septembre 2026",
+    "hero.role":"Ingénieur IA / ML",
+    "hero.tagline":"Je construis des systèmes d'IA depuis les fondations — graphes de connaissances, architectures neuronales, vision par ordinateur — et je les sors du notebook.",
+    "hero.subtext":"En dernière année de M2 Data Science & IA @ Université Paris-Saclay · Stagiaire Ingénieur IA @ Dassault Systèmes.",
+    "hero.cta1":"Voir GitHub","hero.cta2":"Voir la démo","hero.cta3":"Me contacter",
+    "lbl.about":"à propos","lbl.exp":"expériences","lbl.skills":"compétences","lbl.projects":"projets","lbl.contact":"contact",
+    "about.h":"Plutôt le construire que l'importer.",
+    "about.p1":"Je suis ingénieur IA/ML, du genre à comprendre une chose en la reconstruisant par le bas. Ça a voulu dire écrire un Transformer tenseur par tenseur, modéliser une ontologie OWL à la main, brancher du traitement d'image classique sur un CNN, et transformer un prototype de recherche en service déployé. Des domaines différents, le même réflexe : comprendre la mécanique, puis la faire tenir face à de vraies données.",
+    "about.p2":"Récemment, c'est le retrieval et les graphes de connaissances chez Dassault Systèmes et BNP Paribas — mais le fil conducteur de tout ce que j'ai livré, c'est l'ingénierie, pas un framework en particulier. Je tiens autant aux pipelines propres et à une évaluation fiable qu'au dernier point de précision.",
+    "about.now":"En ce moment :","about.now1":"un roman de fantasy","about.now2":"l'exploration de Teyvat","about.now3":"un album en boucle",
+    "exp.h":"Là où j'ai livré",
+    "exp.1.role":"Stagiaire Ingénieur IA / Logiciel","exp.1.when":"mars – août 2026",
+    "exp.1.desc":"Construction d'un assistant GraphRAG de bout en bout sur une ontologie de compétences (ESCO/SKOS) : traduction langage naturel → SPARQL, pipeline d'embedding d'ontologies en Java avec vector store en mémoire, et un panel conversationnel dans l'Ontology Explorer de 3DEXPERIENCE.",
+    "exp.2.role":"Stagiaire Ingénieur IA","exp.2.when":"mars – juin 2025",
+    "exp.2.desc":"Développement d'un assistant RAG multi-agent pour l'accès à la connaissance interne — recherche sémantique sur 20K+ documents avec embeddings BGE multilingues, indexation FAISS et un modèle GPT pour la génération des réponses.",
+    "exp.3.role":"Stagiaire Data Analyst & NLP","exp.3.when":"nov. 2024 – janv. 2025",
+    "exp.3.desc":"Développement d'un pipeline de clustering documentaire (TF-IDF + K-Means, scikit-learn, spaCy) sur 500+ documents, faisant ressortir les thèmes récurrents et les ressources les plus citées.",
+    "exp.4.role":"Stagiaire Machine Learning","exp.4.when":"mars – juin 2024",
+    "exp.4.desc":"Développement d'un Variational Recurrent Autoencoder sous TensorFlow pour détecter les anomalies dans l'historique des clients, avec 94% de précision et une nette réduction du nettoyage manuel des données.",
+    "skills.h":"Boîte à outils",
+    "sk.1":"Programmation","sk.2":"Machine Learning & IA","sk.3":"LLM & MLOps","sk.4":"Représentation des connaissances","sk.5":"Data Science & Optimisation","sk.6":"Génie logiciel & Data",
+    "proj.h":"Cinq domaines, une même façon de travailler",
+    "proj.sub":"Graphes de connaissances, architectures neuronales, vision par ordinateur, modélisation du risque, apprentissage de représentations — chacun construit, pas assemblé depuis un tutoriel.",
+    "proj.featured":"Graphes de connaissances · démo live","btn.code":"Code","btn.demo":"Démo live",
+    "d2":"Deep Learning · NLP","d3":"Vision · Imagerie médicale","d4":"ML appliqué · Risque & fraude","d5":"Apprentissage de représentations",
+    "p1.t":"Ontologie de l'écosystème académique",
+    "p1.d":"Une ontologie RDF/OWL du monde académique — chercheurs, laboratoires, publications, thématiques — avec raisonnement sémantique et interrogation SPARQL par-dessus. L'inférence fait apparaître des relations jamais écrites explicitement, et transforme un jeu de données plat en quelque chose qu'on peut réellement interroger.",
+    "demo.badge":"démo live",
+    "demo.text":"La démo interactive prendra place ici — une question en langage naturel, le SPARQL généré sous vos yeux, puis exécuté sur le graphe.",
+    "p2.t":"Transformer from Scratch",
+    "p2.d":"Un Transformer complet écrit en PyTorch sans librairie haut niveau — attention multi-têtes, encodage positionnel et génération de texte autorégressive, implémenté pour comprendre chaque tenseur plutôt que pour en appeler un.",
+    "p3.t":"Détection de tumeurs cérébrales",
+    "p3.d":"Un pipeline de vision hybride sur IRM : prétraitement et segmentation classiques alimentant un CNN pour la détection et la localisation. Deux approches qu'on oppose d'habitude, mises à travailler ensemble.",
+    "p4.t":"Évaluation de crédit assistée par IA","p4.a":"1er prix · national",
+    "p4.d":"Construit au Hack4Future avec la Société Générale, et premier prix national : un workflow de crédit enchaînant analyse documentaire, contrôle de cohérence entre pièces et détection de fraude par ML pour aboutir à une seule décision de risque.",
+    "p5.t":"Étude sur l'apprentissage de représentations",
+    "p5.d":"Une étude sur la fusion de features multi-modèles : combiner extraction profonde et apprentissage de représentations pour dépasser ce qu'atteignait chaque backbone pris isolément.",
+    "strip.h":"À regarder aussi",
+    "s1.a":"systèmes de recommandation · 2026","s1.t":"Application de planification de repas",
+    "s1.d":"Une application de planification de repas déployée, bâtie sur des algorithmes de recommandation et des API REST, pensée autour des habitudes alimentaires réelles.",
+    "s2.a":"2e place · 2023",
+    "s2.d":"Un assistant étudiant intelligent réunissant recommandations personnalisées, agrégation de ressources et outils de productivité dans une seule application.",
+    "s3.a":"mémoire · 2025","s3.t":"Assistant intelligent hybride",
+    "s3.d":"Mémoire d'ingénieur : une architecture multi-agent pour le raisonnement contextuel et la recherche d'information, soutenu avec les félicitations.",
+    "contact.h":"Discutons",
+    "contact.p":"Je recherche un poste d'ingénieur IA/ML en CDI à partir de septembre 2026. Si votre équipe travaille sur le retrieval, les graphes de connaissances ou la mise en production de modèles, ça m'intéresse.",
+    "contact.cvk":"cv","contact.cvv":"Télécharger le PDF",
+    "footer":"construit avec beaucoup trop de café ☕",
+    "toast.palette":"palette changée →"
+  }
+};
+
+/* ==============================================================
+   STATE
+   Persistence is in-memory here. To remember the visitor's choice
+   on your real host, uncomment the two localStorage lines below.
+   ============================================================== */
+let lang  = "en";   // lang  = localStorage.getItem("lang")  || "en";
+let theme = "light";// theme = localStorage.getItem("theme") || "light";
+
+const $  = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
+function applyLang(){
+  document.documentElement.lang = lang;
+  const dict = I18N[lang];
+  $$("[data-i18n]").forEach(el=>{
+    const k = el.getAttribute("data-i18n");
+    if(dict[k]) el.textContent = dict[k];
+  });
+  $("#langBtn").textContent = lang === "en" ? "FR" : "EN";
+  const cv = lang === "en" ? CONFIG.RESUME_EN : CONFIG.RESUME_FR;
+  $("#cvBtn").href = cv;
+  $("#cvContact").href = cv;
+  // localStorage.setItem("lang", lang);
+}
+function applyTheme(){
+  document.documentElement.setAttribute("data-theme", theme);
+  $("#themeIcon").innerHTML = theme === "dark"
+    ? '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'
+    : '<path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/>';
+  // localStorage.setItem("theme", theme);
+}
+
+$("#langBtn").addEventListener("click", ()=>{ lang = lang === "en" ? "fr" : "en"; applyLang(); });
+$("#themeBtn").addEventListener("click", ()=>{ theme = theme === "light" ? "dark" : "light"; applyTheme(); });
+
+/* burger */
+$("#burger").addEventListener("click", e=>{
+  const open = $("#navLinks").classList.toggle("open");
+  e.currentTarget.setAttribute("aria-expanded", open);
+});
+$$("#navLinks a").forEach(a => a.addEventListener("click", ()=> $("#navLinks").classList.remove("open")));
+
+/* links */
+$("#ghHero").href = CONFIG.GITHUB;
+$("#ghContact").href = CONFIG.GITHUB;
+$("#ghHandle").textContent = CONFIG.GH_HANDLE;
+$$("[data-link]").forEach(a=>{
+  const url = CONFIG.REPOS[a.getAttribute("data-link")];
+  if(url){ a.href = url; a.target = "_blank"; a.rel = "noopener"; }
+});
+
+/* demo frame */
+if(CONFIG.DEMO_URL){
+  $("#demoSlot").innerHTML =
+    '<iframe src="'+CONFIG.DEMO_URL+'" title="Live demo" loading="lazy" allow="clipboard-write"></iframe>';
+  $("#demoSlot").style.padding = "0";
+}
+
+/* ==============================================================
+   HERO — type out the RDF identity card
+   ============================================================== */
+const TTL = [
+  ['t-pre','@prefix : <https://idirmeradji.dev/#> .'],
+  ['',''],
+  ['t-sub',':idir'],['t-pred','  a  '],['t-obj',':AIEngineer ;'],['','\n'],
+  ['t-pred','       :reasonsOver     '],['t-obj',':KnowledgeGraphs , :LLMs ;'],['','\n'],
+  ['t-pred','       :shipsEndToEnd   '],['t-str','"UI → SPARQL" ;'],['','\n'],
+  ['t-pred','       :basedIn         '],['t-str','"Orsay, France" ;'],['','\n'],
+  ['t-pred','       :availableFrom   '],['t-str','"2026-09"'],['t-obj','^^xsd:gYearMonth .']
+];
+const target = $("#ttl");
+const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function renderTTL(upTo){
+  let html = "", n = 0;
+  for(const [cls, txt] of TTL){
+    if(n >= upTo){ break; }
+    const take = Math.min(txt.length, upTo - n);
+    const slice = txt.slice(0, take).replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    html += cls ? '<span class="'+cls+'">'+slice+'</span>' : slice;
+    n += txt.length;
+  }
+  target.innerHTML = html + '<span class="caret">|</span>';
+}
+const TOTAL = TTL.reduce((a,[,t])=>a+t.length,0);
+if(reduced){
+  renderTTL(TOTAL);
+}else{
+  let i = 0;
+  const tick = setInterval(()=>{
+    i += 3;
+    renderTTL(Math.min(i, TOTAL));
+    if(i >= TOTAL) clearInterval(tick);
+  }, 16);
+}
+
+/* ==============================================================
+   SCROLL REVEAL
+   ============================================================== */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+}, { threshold:.12, rootMargin:"0px 0px -40px 0px" });
+$$(".reveal").forEach((el,i)=>{ el.style.transitionDelay = (i % 4) * 60 + "ms"; io.observe(el); });
+
+/* ==============================================================
+   TOAST
+   ============================================================== */
+let toastTimer;
+function toast(msg){
+  const t = $("#toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> t.classList.remove("show"), 2600);
+}
+
+/* ==============================================================
+   EASTER EGG — Konami code swaps the accent palette
+   ============================================================== */
+const PALETTES = [
+  { name:"default",  accent:"#7B2CBF", deep:"#4A1178", soft:"#EDE3F8", two:"#B07C3A" },
+  { name:"bronze",   accent:"#2C5FBF", deep:"#173C7D", soft:"#E1E9F8", two:"#B07C3A" },
+  { name:"elemental",accent:"#0E9E8A", deep:"#08655A", soft:"#DCF4F0", two:"#D98F2E" },
+  { name:"sugar",    accent:"#D6467F", deep:"#8E2751", soft:"#FBE3EC", two:"#7B2CBF" }
+];
+let pIdx = 0;
+const KONAMI = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+let seq = [];
+document.addEventListener("keydown", e=>{
+  seq.push(e.key.length === 1 ? e.key.toLowerCase() : e.key);
+  seq = seq.slice(-KONAMI.length);
+  if(seq.join() === KONAMI.join()){
+    pIdx = (pIdx + 1) % PALETTES.length;
+    const p = PALETTES[pIdx];
+    const r = document.documentElement.style;
+    r.setProperty("--accent", p.accent);
+    r.setProperty("--accent-deep", p.deep);
+    r.setProperty("--accent-2", p.two);
+    if(document.documentElement.getAttribute("data-theme") === "light"){
+      r.setProperty("--accent-soft", p.soft);
+    }
+    toast(I18N[lang]["toast.palette"] + " " + p.name);
+    seq = [];
+  }
+});
+
+/* console greeting */
+console.log(
+  "%cYou opened the inspector. Respect.%c\nEverything here is hand-written CSS — no framework, no build step.\nIf you're hiring: idir.meradji@gmail.com",
+  "color:#7B2CBF;font-size:15px;font-weight:700",
+  "color:#6B6478;font-size:12px"
+);
+
+/* init */
+applyLang();
+applyTheme();
+</script>
+</body>
+</html>
