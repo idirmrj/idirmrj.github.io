@@ -66,6 +66,15 @@ a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 
+/* ambient background pattern — original node/edge + spark glyphs, barely there */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22240%22 height=%22240%22 viewBox=%220 0 240 240%22%3E%3Cg fill=%22none%22 stroke=%22%2314121A%22 stroke-width=%221.6%22 stroke-linecap=%22round%22%3E%3Cg transform=%22translate(34,42) rotate(28)%22%3E%3Cline x1=%22-11%22 y1=%220%22 x2=%2211%22 y2=%220%22/%3E%3Ccircle cx=%22-13%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3Ccircle cx=%2213%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3C/g%3E%3Cg transform=%22translate(168,96) rotate(-46)%22%3E%3Cline x1=%22-11%22 y1=%220%22 x2=%2211%22 y2=%220%22/%3E%3Ccircle cx=%22-13%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3Ccircle cx=%2213%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3C/g%3E%3Cg transform=%22translate(96,182) rotate(64)%22%3E%3Cline x1=%22-11%22 y1=%220%22 x2=%2211%22 y2=%220%22/%3E%3Ccircle cx=%22-13%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3Ccircle cx=%2213%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3C/g%3E%3Cg transform=%22translate(206,206) rotate(-18)%22%3E%3Cline x1=%22-11%22 y1=%220%22 x2=%2211%22 y2=%220%22/%3E%3Ccircle cx=%22-13%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3Ccircle cx=%2213%22 cy=%220%22 r=%222.6%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3C/g%3E%3Cpath d=%22M112 44 q4 -12 4 -12 q0 12 12 12 q-12 0 -12 12 q0 -12 -4 -12z%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3Cpath d=%22M30 140 q4 -12 4 -12 q0 12 12 12 q-12 0 -12 12 q0 -12 -4 -12z%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3Cpath d=%22M178 24 q3 -9 3 -9 q0 9 9 9 q-9 0 -9 9 q0 -9 -3 -9z%22 fill=%22%2314121A%22 stroke=%22none%22/%3E%3C/g%3E%3C/svg%3E");
+  background-size:240px 240px;
+  opacity:.055;
+}
+[data-theme="dark"] body::before{opacity:.07;filter:invert(1)}
+
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
 .skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:#fff;padding:12px 18px;z-index:200}
 .skip:focus{left:12px;top:12px}
@@ -163,14 +172,25 @@ h1{
 
 /* photo + turtle block share one column */
 .hero-side{display:flex;flex-direction:column;gap:16px}
+.photo-wrap{position:relative}
+/* dot-grid peeking out behind the top-right corner — nodes, not decoration for its own sake */
+.photo-wrap::before{
+  content:"";position:absolute;top:-18px;right:-18px;width:132px;height:132px;z-index:0;
+  background-image:radial-gradient(color-mix(in srgb,var(--accent) 42%,transparent) 1.5px,transparent 1.5px);
+  background-size:12px 12px;border-radius:8px;
+}
 .photo{
-  position:relative;margin:0;aspect-ratio:4/3;overflow:hidden;
-  border:1px solid var(--line);border-radius:var(--radius);
-  box-shadow:var(--shadow);background:var(--accent-soft);
+  position:relative;z-index:1;margin:0;aspect-ratio:4/3;overflow:hidden;
+  border-radius:var(--radius);box-shadow:var(--shadow);background:var(--accent-soft);
+}
+.photo::after{
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  border-radius:var(--radius);
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 28%,transparent);
 }
 .photo img{
   position:relative;z-index:1;width:100%;height:100%;
-  object-fit:cover;object-position:center 22%;
+  object-fit:cover;object-position:center 30%;
 }
 .photo-ph{
   position:absolute;inset:0;z-index:0;display:grid;place-content:center;
@@ -461,14 +481,16 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
     </div>
 
     <div class="hero-side">
-      <!-- photo — drop your file at assets/idir.jpg (see CONFIG.PHOTO below) -->
-      <figure class="photo">
-        <div class="photo-ph" aria-hidden="true">
-          <span>IM</span>
-          <em>assets/idir.jpg</em>
-        </div>
-        <img id="heroPhoto" src="assets/idir.jpg" alt="Idir Meradji" onerror="this.style.display='none'">
-      </figure>
+      <!-- photo — drop your file at assets/idir.jpg -->
+      <div class="photo-wrap">
+        <figure class="photo">
+          <div class="photo-ph" aria-hidden="true">
+            <span>IM</span>
+            <em>assets/idir.jpg</em>
+          </div>
+          <img id="heroPhoto" src="assets/idir.jpg" alt="Idir Meradji" onerror="this.style.display='none'">
+        </figure>
+      </div>
 
       <!-- signature element: the identity card, written as RDF -->
       <div class="triple" aria-hidden="true">
