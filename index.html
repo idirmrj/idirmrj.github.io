@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Idir Meradji — AI / ML Engineer</title>
 <meta name="description" content="AI / ML Engineer building systems that reason over structured knowledge — Knowledge Graphs + LLMs. Open to full-time roles from September 2026.">
+
+<!-- link preview when shared on LinkedIn, Slack, WhatsApp… -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Idir Meradji — AI / ML Engineer">
+<meta property="og:description" content="I build AI systems from the ground up — knowledge graphs, neural architectures, computer vision — and get them out of the notebook.">
+<meta property="og:url" content="https://idirmrj.github.io">
+<meta property="og:image" content="https://idirmrj.github.io/assets/idir.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -151,6 +160,27 @@ h1{
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 .btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8}
+
+/* photo + turtle block share one column */
+.hero-side{display:flex;flex-direction:column;gap:16px}
+.photo{
+  position:relative;margin:0;aspect-ratio:4/3;overflow:hidden;
+  border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);background:var(--accent-soft);
+}
+.photo img{
+  position:relative;z-index:1;width:100%;height:100%;
+  object-fit:cover;object-position:center 22%;
+}
+.photo-ph{
+  position:absolute;inset:0;z-index:0;display:grid;place-content:center;
+  justify-items:center;gap:8px;text-align:center;
+}
+.photo-ph span{
+  font-family:var(--display);font-weight:700;font-size:2.6rem;
+  letter-spacing:-.04em;color:var(--accent);opacity:.5;
+}
+.photo-ph em{font-family:var(--mono);font-size:.72rem;font-style:normal;color:var(--muted)}
 
 /* the turtle block */
 .triple{
@@ -347,6 +377,7 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
 @media (max-width:900px){
   .hero-in{grid-template-columns:1fr;gap:40px}
   .hero{padding:64px 0 68px}
+  .photo{aspect-ratio:auto;height:240px}
   section{padding:64px 0}
   .nav-links{
     display:none;position:absolute;top:68px;left:0;right:0;
@@ -429,10 +460,21 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
       </div>
     </div>
 
-    <!-- signature element: the identity card, written as RDF -->
-    <div class="triple" aria-hidden="true">
-      <div class="triple-bar"><i class="tl"></i><i class="tl"></i><i class="tl"></i><b>idir.ttl</b></div>
-      <pre id="ttl"></pre>
+    <div class="hero-side">
+      <!-- photo — drop your file at assets/idir.jpg (see CONFIG.PHOTO below) -->
+      <figure class="photo">
+        <div class="photo-ph" aria-hidden="true">
+          <span>IM</span>
+          <em>assets/idir.jpg</em>
+        </div>
+        <img id="heroPhoto" src="assets/idir.jpg" alt="Idir Meradji" onerror="this.style.display='none'">
+      </figure>
+
+      <!-- signature element: the identity card, written as RDF -->
+      <div class="triple" aria-hidden="true">
+        <div class="triple-bar"><i class="tl"></i><i class="tl"></i><i class="tl"></i><b>idir.ttl</b></div>
+        <pre id="ttl"></pre>
+      </div>
     </div>
   </div>
 </header>
@@ -853,8 +895,8 @@ if(CONFIG.DEMO_URL){
    HERO — type out the RDF identity card
    ============================================================== */
 const TTL = [
-  ['t-pre','@prefix : <https://idirmeradji.dev/#> .'],
-  ['',''],
+  ['t-pre','@prefix : <https://idirmeradji.com/#> .'],
+  ['','\n\n'],
   ['t-sub',':idir'],['t-pred','  a  '],['t-obj',':AIEngineer ;'],['','\n'],
   ['t-pred','       :reasonsOver     '],['t-obj',':KnowledgeGraphs , :LLMs ;'],['','\n'],
   ['t-pred','       :shipsEndToEnd   '],['t-str','"UI → SPARQL" ;'],['','\n'],
