@@ -394,6 +394,19 @@ h2{
 .mini p{margin:0;font-size:.88rem;color:var(--muted)}
 
 /* ============================================================
+   OFF THE CLOCK
+   ============================================================ */
+.facets{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:24px;margin-top:38px}
+.facet{border-top:2px solid var(--accent);padding-top:16px}
+.facet h3{font-family:var(--display);font-size:1.06rem;font-weight:600;letter-spacing:-.015em;margin:0 0 8px}
+.facet p{margin:0;font-size:.92rem;color:var(--muted);line-height:1.6}
+.medal{
+  display:inline-block;font-family:var(--mono);font-size:.7rem;letter-spacing:.03em;
+  color:var(--accent);background:var(--accent-soft);
+  padding:4px 11px;border-radius:99px;margin-bottom:10px;
+}
+
+/* ============================================================
    CONTACT + FOOTER
    ============================================================ */
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px;margin-top:30px}
@@ -528,8 +541,8 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
 
 <section class="stats-band">
   <div class="wrap stats-grid">
-    <div class="stat reveal"><b>05</b><span data-i18n="st.1">AI/ML internships across insurance, consulting, banking and industry</span></div>
-    <div class="stat reveal"><b>08</b><span data-i18n="st.2">Projects shipped, from research to deployment</span></div>
+    <div class="stat reveal"><b>04</b><span data-i18n="st.1">AI/ML internships across insurance, consulting, banking and industry</span></div>
+    <div class="stat reveal"><b>05</b><span data-i18n="st.2">Projects shipped, from research notebook to deployment</span></div>
     <div class="stat reveal"><b>02</b><span data-i18n="st.3">National distinctions in AI competitions</span></div>
     <div class="stat reveal"><b>'26</b><span data-i18n="st.4">MSc Data Science &amp; AI, Université Paris-Saclay</span></div>
   </div>
@@ -733,6 +746,35 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
   </div>
 </section>
 
+<!-- ============================ OFF THE CLOCK ============================ -->
+<section id="beyond">
+  <div class="wrap">
+    <p class="label reveal" data-i18n="lbl.beyond">off the clock</p>
+    <h2 class="reveal" data-i18n="beyond.h">Curious by default.</h2>
+    <p class="lede reveal" data-i18n="beyond.p">I like people, trading traditions, and finding out what makes a place itself either it's the food, the customs, the small specifics you only ever learn from someone who grew up there. Most of what I know outside engineering came from a conversation rather than a book.</p>
+
+    <div class="facets">
+      <div class="facet reveal">
+        <span class="medal" data-i18n="fc.1.m">national champion</span>
+        <h3 data-i18n="fc.1.t">Swimming</h3>
+        <p data-i18n="fc.1.d">800m finswimming, national title and also Lifeguard certification. Years of early mornings in a pool teach the one thing that transfers everywhere: showing up on the days you don't feel like it.</p>
+      </div>
+      <div class="facet reveal">
+        <h3 data-i18n="fc.2.t">Video games</h3>
+        <p data-i18n="fc.2.d">Genshin Impact mostly — part decompression, part puzzle box. A good game hands you a system whose rules you have to reverse-engineer and an incridble storyline on top of it.</p>
+      </div>
+      <div class="facet reveal">
+        <h3 data-i18n="fc.3.t">Piano</h3>
+        <p data-i18n="fc.3.d">Six years of it. It didn't stick in the end, but the habit of reading something structured and turning it into something that sounds right did.</p>
+      </div>
+      <div class="facet reveal">
+        <h3 data-i18n="fc.4.t">Animation</h3>
+        <p data-i18n="fc.4.d">Disney, cartoons, the whole catalogue. I've made peace with the fact that the inner child isn't going anywhere and honestly, it's good company.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================ CONTACT ============================ -->
 <section id="contact">
   <div class="wrap">
@@ -798,9 +840,20 @@ const I18N = {
     "hero.subtext":"Final-year M2 Data Science & AI @ Université Paris-Saclay · AI Engineer Intern @ Dassault Systèmes.",
     "hero.cta1":"View GitHub","hero.cta2":"See the demo","hero.cta3":"Get in touch",
     "st.1":"AI/ML internships across insurance, consulting, banking and industry",
-    "st.2":"Projects shipped, from research to deployment",
+    "st.2":"Projects shipped, from research notebook to deployment",
     "st.3":"National distinctions in AI competitions",
     "st.4":"MSc Data Science & AI, Université Paris-Saclay",
+    "lbl.beyond":"off the clock",
+    "beyond.h":"Curious by default.",
+    "beyond.p":"I like people, trading traditions, and finding out what makes a place itself either it's the food, the customs, the small specifics you only ever learn from someone who grew up there. Most of what I know outside engineering came from a conversation rather than a book.",
+    "fc.1.m":"national champion","fc.1.t":"Swimming",
+    "fc.1.d":"800m finswimming, national title and also Lifeguard certification. Years of early mornings in a pool teach the one thing that transfers everywhere: showing up on the days you don't feel like it.",
+    "fc.2.t":"Video games",
+    "fc.2.d":"Genshin Impact mostly — part decompression, part puzzle box. A good game hands you a system whose rules you have to reverse-engineerand an incridble storyline on top of it.",
+    "fc.3.t":"Piano",
+    "fc.3.d":"Six years of it. It didn't stick in the end, but the habit of reading something structured and turning it into something that sounds right did.",
+    "fc.4.t":"Animation",
+    "fc.4.d":"Disney, cartoons, the whole catalogue. I've made peace with the fact that the inner child isn't going anywhere and honestly, it's good company.",
     "lbl.about":"about","lbl.exp":"experience","lbl.skills":"skills","lbl.projects":"projects","lbl.contact":"contact",
     "about.h":"I'd rather build it than import it.",
     "about.p1":"I'm a Software engineer with a big focus more AI/ML, who learns a thing by building it from the bottom. That's meant writing a Transformer tensor by tensor, hand-modelling an OWL ontology, wiring classical image processing into a CNN, and turning a research prototype into a deployed service. Different domains, same instinct: understand the problem, then make it survive contact with real data.",
@@ -855,9 +908,20 @@ const I18N = {
     "hero.subtext":"En dernière année de M2 Data Science & IA @ Université Paris-Saclay · Stagiaire Ingénieur IA @ Dassault Systèmes.",
     "hero.cta1":"Voir GitHub","hero.cta2":"Voir la démo","hero.cta3":"Me contacter",
     "st.1":"stages en IA/ML en assurance, conseil, banque et industrie",
-    "st.2":"projets menés de recherche au déploiement",
+    "st.2":"projets menés du notebook de recherche au déploiement",
     "st.3":"distinctions nationales en compétition IA",
     "st.4":"M2 Data Science & IA, Université Paris-Saclay",
+    "lbl.beyond":"hors du code",
+    "beyond.h":"Curieux par défaut.",
+    "beyond.p":"J'aime les gens, échanger des traditions, et comprendre ce qui fait la spécificité d'un endroit que ce soit la cuisine, les coutumes, les petits détails qu'on n'apprend que de quelqu'un qui a grandi là-bas. L'essentiel de ce que je sais en dehors de l'ingénierie vient d'une conversation, pas d'un livre.",
+    "fc.1.m":"champion national","fc.1.t":"Natation",
+    "fc.1.d":"800 m nage avec palmes, titre national et aussi une Certification de sauveteur. Des années de bassin tôt le matin apprennent la seule chose qui se transfère partout : se présenter aussi les jours où l'on n'en a pas envie.",
+    "fc.2.t":"Jeux vidéo",
+    "fc.2.d":"Genshin Impact surtout — moitié décompression et découverte, moitié puzzle. Un bon jeu vous tend un système dont il faut deviner les règles et une histoire digne des plus grands novels.",
+    "fc.3.t":"Piano",
+    "fc.3.d":"Six ans. Ça n'a pas pris au bout du compte, mais l'habitude de lire quelque chose de structuré pour en tirer un résultat juste, elle, est restée.",
+    "fc.4.t":"Animation",
+    "fc.4.d":"Disney, les cartoons, tout le catalogue. J'ai fait la paix avec le fait que l'âme d'enfant ne partira pas et franchement, c'est bonne compagnie.",
     "lbl.about":"à propos","lbl.exp":"expériences","lbl.skills":"compétences","lbl.projects":"projets","lbl.contact":"contact",
     "about.h":"Plutôt le construire que l'importer.",
     "about.p1":"Je suis ingénieur Software avec une large préférence pour les sujets IA/ML, du genre à comprendre une chose en la reconstruisant par le bas. Ça a voulu dire écrire un Transformer tenseur par tenseur, modéliser une ontologie OWL à la main, brancher du traitement d'image classique sur un CNN, et transformer un prototype de recherche en service déployé. Des domaines différents, le même réflexe : comprendre l'architecture', puis la faire tenir face à de vraies données.",
