@@ -284,6 +284,66 @@ h2{
 .currently b{color:var(--accent);font-weight:500}
 
 /* ============================================================
+   ABOUT — chat thread
+   ============================================================ */
+.chat{max-width:800px;margin:26px auto 0;display:flex;flex-direction:column;gap:11px}
+.turn{display:flex;gap:11px;max-width:88%}
+.turn.me{margin-top:-4px}
+.turn.rec + .turn.me{margin-top:0}
+.turn.me{align-self:flex-end;flex-direction:row-reverse}
+.av{
+  flex:none;width:38px;height:38px;border-radius:50%;overflow:hidden;
+  display:grid;place-items:center;font-family:var(--display);font-weight:700;
+  font-size:.82rem;letter-spacing:-.02em;
+}
+.av.rec{background:var(--accent-soft);color:var(--accent)}
+.av.me{background:var(--accent);color:#fff}
+.av img{width:100%;height:100%;object-fit:cover;object-position:center 28%}
+.bubbles{display:flex;flex-direction:column;gap:6px;min-width:0}
+.turn.me .bubbles{align-items:flex-end}
+.who{
+  font-family:var(--mono);font-size:.68rem;color:var(--muted);
+  margin:0 4px 2px;letter-spacing:.02em;
+}
+.bubble{
+  padding:11px 15px;font-size:.95rem;line-height:1.55;
+  border:1px solid var(--line);background:var(--surface);
+  border-radius:16px;border-top-left-radius:5px;
+}
+.turn.me .bubble{
+  background:var(--accent);color:#fff;border-color:transparent;
+  border-radius:16px;border-top-right-radius:5px;border-top-left-radius:16px;
+}
+.bubble.q{font-weight:500}
+.seen{
+  font-family:var(--mono);font-size:.64rem;color:var(--muted);
+  margin:2px 4px 0;display:flex;align-items:center;gap:4px;
+}
+.seen svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+@media (max-width:520px){ .turn{max-width:100%} .bubble{font-size:.9rem} }
+
+/* fake composer — decoration only, not a real input */
+.composer{
+  display:flex;align-items:center;gap:10px;margin:20px 0 0;
+  border:1px solid var(--line);background:var(--surface);
+  border-radius:99px;padding:9px 10px 9px 18px;max-width:600px;margin-left:auto;margin-right:auto;
+}
+.composer span{
+  flex:1;font-size:.92rem;color:var(--muted);
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+.composer .cur{
+  display:inline-block;width:1px;height:1.05em;vertical-align:-2px;
+  margin-left:1px;background:var(--accent);
+}
+@media (prefers-reduced-motion:no-preference){ .composer .cur{animation:blink 1.05s steps(1) infinite} }
+.composer .send{
+  flex:none;width:34px;height:34px;border-radius:50%;
+  display:grid;place-items:center;background:var(--accent);cursor:default;
+}
+.composer .send svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+
+/* ============================================================
    EXPERIENCE
    ============================================================ */
 .timeline{position:relative;padding-left:30px}
@@ -560,9 +620,63 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
 <section id="about">
   <div class="wrap">
     <p class="label reveal" data-i18n="lbl.about">about</p>
-    <h2 class="reveal" data-i18n="about.h">I'd rather build it than import it.</h2>
-    <p class="lede reveal" data-i18n="about.p1">I'm a Software engineer with a big focus more AI/ML, who learns a thing by building it from the bottom. That's meant writing a Transformer tensor by tensor, hand-modelling an OWL ontology, wiring classical image processing into a CNN, and turning a research prototype into a deployed service. Different domains, same instinct: understand the problem, then make it survive contact with real data.</p>
-    <p class="lede soft reveal" data-i18n="about.p2">Most recently that's been retrieval and knowledge graphs at Dassault Systèmes and BNP Paribas but the through-line across everything I've shipped is engineering, not a single framework. I care as much about clean pipelines and reliable evaluation as about the last point of accuracy.</p>
+    <h2 class="reveal" data-i18n="about.h">Learn more about what i do</h2>
+
+    <div class="chat">
+      <div class="turn reveal">
+        <div class="av rec">R</div>
+        <div class="bubbles">
+          <span class="who" data-i18n="ch.rec">Tech Recruiter</span>
+          <div class="bubble q" data-i18n="ch.q1">In one sentence : what's your profile?</div>
+        </div>
+      </div>
+      <div class="turn me reveal">
+        <div class="av me"><img src="assets/idir.jpg" alt="Idir Meradji"></div>
+        <div class="bubbles">
+          <div class="bubble" data-i18n="ch.a1">A software engineer focused on AI/ML who builds from the ground up as comfortable with knowledge graphs and SPARQL as with computer vision and deep learning.</div>
+          <div class="bubble" data-i18n="ch.a1b">I like the whole path, from the maths of a model to the final product.</div>
+          <div class="seen"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="ch.seen">Seen</span></div>
+        </div>
+      </div>
+
+      <div class="turn reveal">
+        <div class="av rec">R</div>
+        <div class="bubbles">
+          <span class="who" data-i18n="ch.rec">Tech Recruiter</span>
+          <div class="bubble q" data-i18n="ch.q2">What sets you apart from other AI profiles?</div>
+        </div>
+      </div>
+      <div class="turn me reveal">
+        <div class="av me"><img src="assets/idir.jpg" alt="Idir Meradji"></div>
+        <div class="bubbles">
+          <div class="bubble" data-i18n="ch.a2">I learn things by rebuilding them, a Transformer tensor by tensor, an OWL ontology by hand, classical vision wired into a CNN. I want to understand the machinery before I use it.</div>
+          <div class="bubble" data-i18n="ch.a2b">And I care as much about clean pipelines and honest evaluation as about the last point of accuracy. A model that only works in a notebook isn't done.</div>
+          <div class="seen"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="ch.seen">Seen</span></div>
+        </div>
+      </div>
+
+      <div class="turn reveal">
+        <div class="av rec">R</div>
+        <div class="bubbles">
+          <span class="who" data-i18n="ch.rec">Tech Recruiter</span>
+          <div class="bubble q" data-i18n="ch.q3">What are you most into right now?</div>
+        </div>
+      </div>
+      <div class="turn me reveal">
+        <div class="av me"><img src="assets/idir.jpg" alt="Idir Meradji"></div>
+        <div class="bubbles">
+          <div class="bubble" data-i18n="ch.a3">Honestly, most of what moves fast. I'll spend a weekend on a generative architecture as happily as on a data pipeline or an optimization problem.</div>
+          <div class="bubble" data-i18n="ch.a3b">That range is what pulled me into AI in the first place — and it's what keeps me here.</div>
+          <div class="seen"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="ch.seen">Seen</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="composer reveal" aria-hidden="true">
+      <span data-i18n="ch.type">Write a message…<i class="cur"></i></span>
+      <span class="send"><svg viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-3-7-7-1z"/></svg></span>
+    </div>
+
     <p class="reveal"><span class="currently"><span data-i18n="about.now">Currently:</span> <b data-i18n="about.now1">Searching work</b> · <b data-i18n="about.now2">exploring Teyvat</b> · <b data-i18n="about.now3">Doja Cat on repeat !</b></span></p>
   </div>
 </section>
@@ -865,9 +979,18 @@ const I18N = {
     "fc.4.t":"Animation",
     "fc.4.d":"Disney, cartoons, the whole catalogue. I've made peace with the fact that the inner child isn't going anywhere and honestly, it's good company.",
     "lbl.about":"about","lbl.exp":"experience","lbl.skills":"skills","lbl.projects":"projects","lbl.contact":"contact",
-    "about.h":"I'd rather build it than import it.",
-    "about.p1":"I'm a Software engineer with a big focus more AI/ML, who learns a thing by building it from the bottom. That's meant writing a Transformer tensor by tensor, hand-modelling an OWL ontology, wiring classical image processing into a CNN, and turning a research prototype into a deployed service. Different domains, same instinct: understand the problem, then make it survive contact with real data.",
-    "about.p2":"Most recently that's been retrieval and knowledge graphs at Dassault Systèmes and BNP Paribas but the through-line across everything I've shipped is engineering, not a single framework. I care as much about clean pipelines and reliable evaluation as about the last point of accuracy.",
+    "about.h":"Learn more about what i do",
+    "ch.rec":"Tech Recruiter","ch.seen":"Seen",
+    "ch.type":"Write a message…",
+    "ch.q1":"In one sentence : what's your profile?",
+    "ch.a1":"A software engineer focused on AI/ML who builds from the ground up as comfortable with knowledge graphs and SPARQL as with computer vision and deep learning.",
+    "ch.a1b":"I like the whole path, from the maths of a model to the final product.",
+    "ch.q2":"What sets you apart from other AI profiles?",
+    "ch.a2":"I learn things by rebuilding them — a Transformer tensor by tensor, an OWL ontology by hand, classical vision wired into a CNN. I want to understand the machinery before I use it.",
+    "ch.a2b":"And I care as much about clean pipelines and honest evaluation as about the last point of accuracy. A model that only works in a notebook isn't done.",
+    "ch.q3":"What are you most into right now?",
+    "ch.a3":"Honestly, most of what moves fast. I'll spend a weekend on a generative architecture as happily as on a data pipeline or an optimization problem.",
+    "ch.a3b":"That range is what pulled me into AI in the first place and it's what keeps me here.",
     "about.now":"Currently:","about.now1":"Searching work","about.now2":"exploring Teyvat","about.now3":"Doja Cat on repeat !",
     "exp.h":"Where I've shipped",
     "exp.1.role":"AI / Software Engineer Intern","exp.1.when":"Mar – Aug 2026",
@@ -934,9 +1057,18 @@ const I18N = {
     "fc.4.t":"Animation",
     "fc.4.d":"Disney, les cartoons, tout le catalogue. J'ai fait la paix avec le fait que l'âme d'enfant ne partira pas et franchement, c'est bonne compagnie.",
     "lbl.about":"à propos","lbl.exp":"expériences","lbl.skills":"compétences","lbl.projects":"projets","lbl.contact":"contact",
-    "about.h":"Plutôt le construire que l'importer.",
-    "about.p1":"Je suis ingénieur Software avec une large préférence pour les sujets IA/ML, du genre à comprendre une chose en la reconstruisant par le bas. Ça a voulu dire écrire un Transformer tenseur par tenseur, modéliser une ontologie OWL à la main, brancher du traitement d'image classique sur un CNN, et transformer un prototype de recherche en service déployé. Des domaines différents, le même réflexe : comprendre l'architecture', puis la faire tenir face à de vraies données.",
-    "about.p2":"Récemment, c'est le retrieval et les graphes de connaissances chez Dassault Systèmes et BNP Paribas mais le fil conducteur de tout ce que j'ai livré, c'est l'ingénierie, pas un framework en particulier. Je tiens autant aux pipelines propres et à une évaluation fiable qu'au dernier point de précision.",
+    "about.h":"En savoir plus sur ce que je fais",
+    "ch.rec":"Recruteur Tech","ch.seen":"Vu",
+    "ch.type":"Écrire un message…",
+    "ch.q1":"En une phrase : c'est quoi ton profil ?",
+    "ch.a1":"Un ingénieur logiciel spécialisé IA/ML qui construit depuis les fondations aussi à l'aise avec les graphes de connaissances et SPARQL qu'avec la vision par ordinateur et le deep learning.",
+    "ch.a1b":"J'aime tout le chemin, des maths d'un modèle jusqu'au service qui finit par le mettre en prod.",
+    "ch.q2":"Qu'est-ce qui te différencie des autres profils IA ?",
+    "ch.a2":"J'apprends les choses en les reconstruisant, un Transformer tenseur par tenseur, une ontologie OWL à la main, de la vision classique branchée sur un CNN. Je veux comprendre la mécanique avant de m'en servir.",
+    "ch.a2b":"Et je tiens autant aux pipelines propres et à une évaluation honnête qu'au dernier point de précision. Un modèle qui ne tourne qu'en notebook n'est pas fini.",
+    "ch.q3":"Qu'est-ce qui t'intéresse le plus en ce moment ?",
+    "ch.a3":"Honnêtement, un peu tout ce qui bouge vite. Je peux passer un week-end sur une archi générative aussi volontiers que sur un pipeline de données ou un problème d'optimisation.",
+    "ch.a3b":"C'est cette variété qui m'a amené à l'IA au départ — et c'est ce qui m'y retient.",
     "about.now":"En ce moment :","about.now1":"Recherche d'mploie","about.now2":"l'exploration de Teyvat","about.now3":"Doja Cat en boucle dans mes oreilles",
     "exp.h":"Là où j'ai livré",
     "exp.1.role":"Stagiaire Ingénieur IA / Logiciel","exp.1.when":"mars – août 2026",
