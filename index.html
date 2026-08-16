@@ -412,6 +412,19 @@ h2{
 }
 .demo-out:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
 .demo-slot iframe{width:100%;height:700px;border:0;display:block;border-radius:10px}
+.featured .ps{color:var(--muted);font-size:.98rem;line-height:1.6;margin:0 0 9px;max-width:66ch}
+.featured .ps b{color:var(--ink);font-weight:600}
+.metrics{display:flex;flex-wrap:wrap;gap:26px;margin:16px 0 18px}
+.metric b{display:block;font-family:var(--display);font-weight:700;font-size:1.6rem;line-height:1;letter-spacing:-.03em;color:var(--accent)}
+.metric span{font-family:var(--mono);font-size:.68rem;color:var(--muted);letter-spacing:.02em}
+.fig-slot{
+  border-top:1px solid var(--line);
+  background:
+    linear-gradient(var(--surface),var(--surface)) padding-box,
+    repeating-linear-gradient(45deg,transparent,transparent 9px,color-mix(in srgb,var(--accent) 5%,transparent) 9px,color-mix(in srgb,var(--accent) 5%,transparent) 18px);
+  padding:24px;display:grid;place-items:center;
+}
+.fig-slot img{width:100%;border-radius:10px;display:block}
 .demo-ph{max-width:44ch}
 .demo-ph .badge{
   font-family:var(--mono);font-size:.72rem;color:var(--accent);
@@ -666,7 +679,7 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
         <div class="av me"><img src="assets/idir.jpg" alt="Idir Meradji"></div>
         <div class="bubbles">
           <div class="bubble" data-i18n="ch.a3">Honestly, most of what moves fast. I'll spend a weekend on a generative architecture as happily as on a data pipeline or an optimization problem.</div>
-          <div class="bubble" data-i18n="ch.a3b">That range is what pulled me into AI in the first place — and it's what keeps me here.</div>
+          <div class="bubble" data-i18n="ch.a3b">That range is what pulled me into AI in the first place and it's what keeps me here.</div>
           <div class="seen"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="ch.seen">Seen</span></div>
         </div>
       </div>
@@ -769,18 +782,14 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
         <h3 data-i18n="p1.t">Ask a Knowledge Graph</h3>
         <p data-i18n="p1.d">Ask a question in plain language and get an answer straight from a graph. An LLM turns the question into SPARQL against a hand-modelled RDF ontology, the query runs locally, and a second pass turns the raw bindings back into a sentence. Same architecture as the assistant I built at Dassault Systèmes, rebuilt from scratch at a scale you can actually poke at.</p>
         <div class="tags"><span class="tag">RDF</span><span class="tag">SPARQL</span><span class="tag">rdflib</span><span class="tag">LLM</span><span class="tag">FAISS</span><span class="tag">Streamlit</span></div>
-        <!-- <div class="card-links">
-          <a href="#" data-link="p1-code">
+        <div class="card-links">
+          <a href="https://github.com/idirmrj/demo_sparql_gen" data-link="p1-code">
             <svg viewBox="0 0 24 24"><path d="M8 18l-6-6 6-6M16 6l6 6-6 6"/></svg>
             <span data-i18n="btn.code">Code</span>
           </a>
-        </div> -->
+        </div>
       </div>
 
-      <!-- ==========================================================
-           DEMO SLOT — to activate: set DEMO_URL in the CONFIG block
-           at the bottom of this file. Nothing else to change.
-           ========================================================== -->
       <div class="demo-slot" id="demoSlot">
         <div class="demo-ph">
           <span class="badge" data-i18n="demo.badge">live demo</span>
@@ -789,10 +798,30 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
       </div>
     </article>
 
+    <article class="featured reveal">
+      <div class="featured-body">
+        <span class="star"><b data-i18n="d3">Computer Vision · Uncertainty</b> · 2023 → 2026</span>
+        <h3 data-i18n="p3.t">Brain MRI Classifier with Uncertainty</h3>
+        <p class="ps"><b data-i18n="p3.pl">The problem :</b> <span data-i18n="p3.pd"> a model that says "tumor, 95%" isn't safe to trust on its own; a doctor needs to know when it's guessing, so doubtful cases get a second look instead of being trusted blindly.</span></p>
+        <p class="ps"><b data-i18n="p3.sl">The solution :</b> <span data-i18n="p3.sd"> every prediction carries its own uncertainty (MC Dropout), and the least-certain scans are handed back to a human. A triage aid, not a diagnosis tool. Grad-CAM confirms it looks at the tumor, not the background.</span></p>
+        <div class="metrics">
+          <div class="metric"><b>4.9% → &lt;0.4%</b><span data-i18n="p3.m1">error, once the 20% least-certain scans are deferred</span></div>
+          <div class="metric"><b>~11×</b><span data-i18n="p3.m2">more uncertainty on wrong calls than right ones</span></div>
+        </div>
+        <div class="tags"><span class="tag">PyTorch</span><span class="tag">ResNet</span><span class="tag">MC Dropout</span><span class="tag">Grad-CAM</span><span class="tag">MLflow</span></div>
+        <div class="card-links">
+          <a href="https://github.com/idirmrj/brain-mri-uncertainty" data-link="p3-code"><svg viewBox="0 0 24 24"><path d="M8 18l-6-6 6-6M16 6l6 6-6 6"/></svg><span data-i18n="btn.code">Code</span></a>
+        </div>
+      </div>
+      <div class="fig-slot">
+        <img src="assets/brain-gradcam.jpg" alt="Grad-CAM: the model highlights the tumor region on brain MRIs">
+      </div>
+    </article>
+
     <!-- OTHER PROJECTS -->
     <div class="proj-grid">
       <article class="card reveal">
-        <!-- SCREENSHOT : depose le fichier dans assets/ puis retire les deux marqueurs de commentaire
+        <!-- SCREENSHOT :
         <img class="card-thumb" src="assets/transformer.jpg" alt="Transformer from Scratch">
         -->
         <span class="year"><b data-i18n="d2">Deep Learning · NLP</b> · 2025</span>
@@ -805,20 +834,7 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
       </article>
 
       <article class="card reveal">
-        <!-- SCREENSHOT : depose le fichier dans assets/ puis retire les deux marqueurs de commentaire
-        <img class="card-thumb" src="assets/brain-tumor.jpg" alt="Brain Tumor Detection">
-        -->
-        <span class="year"><b data-i18n="d3">Computer Vision · Medical Imaging</b> · 2023</span>
-        <h3 data-i18n="p3.t">Brain Tumor Detection</h3>
-        <p data-i18n="p3.d">A hybrid computer-vision pipeline on MRI scans: classical preprocessing and segmentation feeding a CNN for detection and localization. Two approaches that are usually pitched against each other, working together.</p>
-        <div class="tags"><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">CNN</span><span class="tag">Medical Imaging</span></div>
-        <!-- <div class="card-links">
-          <a href="#" data-link="p3-code"><svg viewBox="0 0 24 24"><path d="M8 18l-6-6 6-6M16 6l6 6-6 6"/></svg><span data-i18n="btn.code">Code</span></a>
-        </div> -->
-      </article>
-
-      <article class="card reveal">
-        <!-- SCREENSHOT : depose le fichier dans assets/ puis retire les deux marqueurs de commentaire
+        <!-- SCREENSHOT :
         <img class="card-thumb" src="assets/credit-workflow.jpg" alt="Credit Assessment Workflow">
         -->
         <span class="year"><b data-i18n="d4">Applied ML · Risk &amp; Fraud</b> · 2024</span>
@@ -832,7 +848,7 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
       </article>
 
       <article class="card reveal">
-        <!-- SCREENSHOT : depose le fichier dans assets/ puis retire les deux marqueurs de commentaire
+        <!-- SCREENSHOT :
         <img class="card-thumb" src="assets/feature-learning.jpg" alt="Neural Feature Learning Study">
         -->
         <span class="year"><b data-i18n="d5">Representation Learning</b> · 2026</span>
@@ -845,7 +861,6 @@ footer p{margin:0;font-family:var(--mono);font-size:.79rem;color:var(--muted)}
       </article>
     </div>
 
-    <!-- EARLIER WORK -->
     <div class="strip reveal">
       <h3 data-i18n="strip.h">Also worth a look</h3>
       <div class="strip-grid">
@@ -943,11 +958,8 @@ const CONFIG = {
   RESUME_FR:  "assets/Idir-Meradji-CV-FR.pdf",
 
   REPOS: {
-    "p1-code": "https://github.com/idirmrj/ask-a-knowledge-graph",
-    "p2-code": "https://github.com/idirmrj/transformer-from-scratch",
-    "p3-code": "https://github.com/idirmrj/brain-tumor-detection",
-    "p4-code": "https://github.com/idirmrj/credit-risk-assessment",
-    "p5-code": "https://github.com/idirmrj/neural-feature-learning"
+    "p1-code": "https://github.com/idirmrj/demo_sparql_gen",
+    "p3-code": "https://github.com/idirmrj/brain-mri-uncertainty"
   }
 };
 
@@ -986,7 +998,7 @@ const I18N = {
     "ch.a1":"A software engineer focused on AI/ML who builds from the ground up as comfortable with knowledge graphs and SPARQL as with computer vision and deep learning.",
     "ch.a1b":"I like the whole path, from the maths of a model to the final product.",
     "ch.q2":"What sets you apart from other AI profiles?",
-    "ch.a2":"I learn things by rebuilding them — a Transformer tensor by tensor, an OWL ontology by hand, classical vision wired into a CNN. I want to understand the machinery before I use it.",
+    "ch.a2":"I learn things by rebuilding them a Transformer tensor by tensor, an OWL ontology by hand, classical vision wired into a CNN. I want to understand the machinery before I use it.",
     "ch.a2b":"And I care as much about clean pipelines and honest evaluation as about the last point of accuracy. A model that only works in a notebook isn't done.",
     "ch.q3":"What are you most into right now?",
     "ch.a3":"Honestly, most of what moves fast. I'll spend a weekend on a generative architecture as happily as on a data pipeline or an optimization problem.",
@@ -1006,7 +1018,7 @@ const I18N = {
     "proj.h":"Five domains, one way of working",
     "proj.sub":"Knowledge graphs, neural architectures, computer vision, applied risk modelling, representation learning each one built rather than assembled from a tutorial.",
     "proj.featured":"Knowledge Graphs · live demo","btn.code":"Code","btn.demo":"Live demo",
-    "d2":"Deep Learning · NLP","d3":"Computer Vision · Medical Imaging","d4":"Applied ML · Risk & Fraud","d5":"Representation Learning",
+    "d2":"Deep Learning · NLP","d3":"Computer Vision · Uncertainty","d4":"Applied ML · Risk & Fraud","d5":"Representation Learning",
     "p1.t":"Ask a Knowledge Graph",
     "p1.d":"Ask a question in plain language and get an answer straight from a graph. An LLM turns the question into SPARQL against a hand-modelled RDF ontology, the query runs locally, and a second pass turns the raw bindings back into a sentence. Same architecture as the assistant I built at Dassault Systèmes, rebuilt from scratch at a scale you can actually poke at.",
     "demo.badge":"live demo",
@@ -1014,8 +1026,13 @@ const I18N = {
     "demo.text":"The interactive demo lands here, ask a question in plain language, watch the SPARQL get generated and run against the graph.",
     "p2.t":"Transformer from Scratch",
     "p2.d":"A full Transformer built in PyTorch with no high-level libraries, multi-head self-attention, positional encoding, and autoregressive text generation, implemented to understand every tensor rather than to call one.",
-    "p3.t":"Brain Tumor Detection",
-    "p3.d":"A hybrid computer-vision pipeline on MRI scans: classical preprocessing and segmentation feeding a CNN for detection and localization. Two approaches that are usually pitched against each other, working together.",
+    "p3.t":"Brain MRI Classifier with Uncertainty",
+    "p3.pl":"The problem",
+    "p3.pd":"\u2014 a model that says \"tumor, 95%\" isn't safe to trust on its own; a doctor needs to know when it's guessing, so doubtful cases get a second look instead of being trusted blindly.",
+    "p3.sl":"The solution",
+    "p3.sd":"\u2014 every prediction carries its own uncertainty (MC Dropout), and the least-certain scans are handed back to a human. A triage aid, not a diagnosis tool. Grad-CAM confirms it looks at the tumor, not the background.",
+    "p3.m1":"error, once the 20% least-certain scans are deferred",
+    "p3.m2":"more uncertainty on wrong calls than right ones",
     "p4.t":"Credit Assessment Workflow","p4.a":"1st prize · national",
     "p4.d":"Built at Hack4Future with Société Générale and won first place nationally: an AI-assisted credit workflow chaining document analysis, cross-document consistency checking, and ML fraud detection into a single risk decision.",
     "p5.t":"Neural Feature Learning Study",
@@ -1068,7 +1085,7 @@ const I18N = {
     "ch.a2b":"Et je tiens autant aux pipelines propres et à une évaluation honnête qu'au dernier point de précision. Un modèle qui ne tourne qu'en notebook n'est pas fini.",
     "ch.q3":"Qu'est-ce qui t'intéresse le plus en ce moment ?",
     "ch.a3":"Honnêtement, un peu tout ce qui bouge vite. Je peux passer un week-end sur une archi générative aussi volontiers que sur un pipeline de données ou un problème d'optimisation.",
-    "ch.a3b":"C'est cette variété qui m'a amené à l'IA au départ — et c'est ce qui m'y retient.",
+    "ch.a3b":"C'est cette variété qui m'a amené à l'IA au départ et c'est ce qui m'y retient.",
     "about.now":"En ce moment :","about.now1":"Recherche d'mploie","about.now2":"l'exploration de Teyvat","about.now3":"Doja Cat en boucle dans mes oreilles",
     "exp.h":"Là où j'ai livré",
     "exp.1.role":"Stagiaire Ingénieur IA / Logiciel","exp.1.when":"mars – août 2026",
@@ -1084,7 +1101,7 @@ const I18N = {
     "proj.h":"Cinq domaines, une même façon de travailler",
     "proj.sub":"Graphes de connaissances, architectures neuronales, vision par ordinateur, modélisation du risque, apprentissage de représentations chacun construit, pas assemblé depuis un tutoriel.",
     "proj.featured":"Graphes de connaissances · démo live","btn.code":"Code","btn.demo":"Démo live",
-    "d2":"Deep Learning · NLP","d3":"Vision · Imagerie médicale","d4":"ML appliqué · Risque & fraude","d5":"Apprentissage de représentations",
+    "d2":"Deep Learning · NLP","d3":"Vision · Incertitude","d4":"ML appliqué · Risque & fraude","d5":"Apprentissage de représentations",
     "p1.t":"Interroger un graphe de connaissances",
     "p1.d":"Une question en langage naturel, une réponse tirée directement du graphe. Un LLM traduit la question en SPARQL sur une ontologie RDF modélisée à la main, la requête s'exécute en local, et un second passage retransforme les résultats bruts en phrase. Même architecture que l'assistant que j'ai construit chez Dassault Systèmes, reconstruite de zéro à une échelle où l'on peut mettre les mains dedans.",
     "demo.badge":"démo live",
@@ -1092,8 +1109,13 @@ const I18N = {
     "demo.text":"La démo interactive prendra place ici, une question en langage naturel, le SPARQL généré sous vos yeux, puis exécuté sur le graphe.",
     "p2.t":"Transformer from Scratch",
     "p2.d":"Un Transformer complet écrit en PyTorch sans librairie haut niveau, attention multi-têtes, encodage positionnel et génération de texte autorégressive, implémenté pour comprendre chaque tenseur plutôt que pour en appeler un.",
-    "p3.t":"Détection de tumeurs cérébrales",
-    "p3.d":"Un pipeline de vision hybride sur IRM : prétraitement et segmentation classiques alimentant un CNN pour la détection et la localisation. Deux approches qu'on oppose d'habitude, mises à travailler ensemble.",
+    "p3.t":"Classifieur d'IRM cérébrales avec incertitude",
+    "p3.pl":"Le problème",
+    "p3.pd":"\u2014 un modèle qui annonce « tumeur, 95\u202f% » n'est pas fiable seul ; un médecin doit savoir quand il devine, pour que les cas douteux soient réexaminés au lieu d'être crus aveuglément.",
+    "p3.sl":"La solution",
+    "p3.sd":"\u2014 chaque prédiction porte sa propre incertitude (MC Dropout), et les scans les moins sûrs repassent à un humain. Une aide au tri, pas un outil de diagnostic. Grad-CAM confirme qu'il regarde la tumeur, pas le fond.",
+    "p3.m1":"d'erreur une fois les 20\u202f% les moins sûrs déférés",
+    "p3.m2":"plus d'incertitude sur les erreurs que sur les bonnes réponses",
     "p4.t":"Évaluation de crédit assistée par IA","p4.a":"1er prix · national",
     "p4.d":"Construit au Hack4Future avec la Société Générale, et premier prix national : un workflow de crédit enchaînant analyse documentaire, contrôle de cohérence entre pièces et détection de fraude par ML pour aboutir à une seule décision de risque.",
     "p5.t":"Étude sur l'apprentissage de représentations",
